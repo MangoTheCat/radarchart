@@ -1,6 +1,6 @@
 HTMLWidgets.widget({
 
-  name: 'hello_world',
+  name: 'hello',
 
   type: 'output',
 
