@@ -7,7 +7,7 @@ HTMLWidgets.widget({
   initialize: function(el, width, height) {
 
     
-    alert('hello');
+    //alert('hello');
     
 
 
