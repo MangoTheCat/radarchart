@@ -6,23 +6,35 @@
 #' @import htmltools
 #'
 #' @export
-chartJSRadar <- function(scores, labs, width = NULL, height = NULL) {
-
+chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
+                         responsive = TRUE, labelSize = 18, addDots = TRUE,
+                         colMatrix = diag(3) * 255, polyAlpha = .2,
+                         lineAlpha = .8) {
+  
+  opList <- list( responsive = responsive, pointLabelFontSize = labelSize,
+                  pointDot = addDots)
+  
   # forward options using x
   datasets <- lapply(names(scores), function(x) list(label=x))
   
   for (i in seq_along(datasets)) {
-    datasets[[i]]$data <- scores[[i]]
-    datasets[[i]]$fillColor  <- "rgba(220,220,220,0.2)"
-    datasets[[i]]$strokeColor  <- "rgba(220,220,220,1)"
-    datasets[[i]]$pointColor  <- "rgba(220,220,220,1)"
-    datasets[[i]]$pointStrokeColor  <- "#fff"
-    datasets[[i]]$pointHighlightFill  <- "#fff"
-    datasets[[i]]$pointHighlightStroke <- "rgba(220,220,220,1)"
+    
+    fillCol <- paste0("rgba(", paste0(colMatrix[i,], collapse=","), ",", polyAlpha, ")")
+    lineCol <- paste0("rgba(", paste0(colMatrix[i,], collapse=","), ",", lineAlpha, ")")
+    
+    datasets[[i]]$data <- scores[[i]]             # Data Points
+    
+    datasets[[i]]$fillColor  <- fillCol           # Polygon Fill
+    datasets[[i]]$strokeColor  <- lineCol         # Line Colour
+    datasets[[i]]$pointColor  <- lineCol          # Point colour
+    
+    datasets[[i]]$pointStrokeColor  <- "#fff"     # Point outline
+    datasets[[i]]$pointHighlightFill  <- "#fff"   # Point Highlight fill
+    datasets[[i]]$pointHighlightStroke <- lineCol # Point Highlight line
   }
   
-  x = list(labels=labs, datasets=datasets)
-
+  x = list(data = list(labels=labs, datasets=datasets), options = opList)
+  
   # create widget
   htmlwidgets::createWidget(
     name = 'chartJSRadar',
