@@ -1,6 +1,9 @@
 # radarchart
 
+Checkout the repository and change directory into it.
+
 ```r
+devtools::install()
 library(radarchart)
 
 labs <- c("Communicator", "Data Wangler", "Programmer", "Technologist",  "Modeller", "Visualizer")
