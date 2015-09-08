@@ -24,14 +24,14 @@ HTMLWidgets.widget({
     el.innerText = 'hello...';
     el.setAttribute('style', 'background-color: red');
     
-    alert('hello');
+    //alert('hello');
     
     
   },
 
   resize: function(el, width, height, instance) {
      
-    alert('hello');
+    //alert('hello');
     
   }
 
