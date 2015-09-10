@@ -1,9 +1,18 @@
 # radarchart
 
-Checkout the repository and change directory into it.
+To install direct from GitHub you'll need devtools installed. Assuming you have this run:
+```r
+devtools::install_github("shaneporter/radarchart")
+```
 
+Or if you want to hack about with the code then clone the repository, change directory into it and run
 ```r
 devtools::install()
+```
+
+Once installed you can make a radar chart
+
+```r
 library(radarchart)
 
 labs <- c("Communicator", "Data Wangler", "Programmer", "Technologist",  "Modeller", "Visualizer")
