@@ -28,7 +28,7 @@
 #'  "Andy" = c(7, 6, 6, 2, 6, 9),
 #'  "Aimee" = c(6, 5, 8, 4, 7, 6))
 #'
-#' chartJSRadar(scores=scores, labs=labs)
+#' chartJSRadar(scores=scores, labs=labs, maxScale=10)
 #' 
 chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
                          maxScale=NULL, scaleStepWidth=NULL, scaleStartValue=0,
