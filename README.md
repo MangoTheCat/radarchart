@@ -15,7 +15,8 @@ Once installed you can make a radar chart
 ```r
 library(radarchart)
 
-labs <- c("Communicator", "Data Wangler", "Programmer", "Technologist",  "Modeller", "Visualizer")
+labs <- c("Communicator", "Data Wangler", "Programmer",
+          "Technologist",  "Modeller", "Visualizer")
 
 scores <- list(
   "Rich Pugh" = c(9, 7, 4, 5, 3, 7),
