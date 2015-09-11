@@ -9,9 +9,9 @@
 #' @param maxScale Max value on each axis
 #' @param scaleStepWidth Spacing between rings on radar
 #' @param scaleStartValue Value at the centre of the radar
-#' @param responsive Logical: whether or not the chart should be responsive and resize when the browser does
-#' @param labelSize Numeric: Point label font size in pixels
-#' @param addDots Logical: Whether to show a dot for each point
+#' @param responsive Logical. whether or not the chart should be responsive and resize when the browser does
+#' @param labelSize Numeric. Point label font size in pixels
+#' @param addDots Logical. Whether to show a dot for each point
 #' @param colMatrix Numeric matrix of rgb colour values
 #' @param polyAlpha Alpha value for the fill of polygons
 #' @param lineAlpha Alpha value for the outlines

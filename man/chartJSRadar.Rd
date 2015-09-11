@@ -24,11 +24,11 @@ chartJSRadar(scores, labs, width = NULL, height = NULL, maxScale = NULL,
 
 \item{scaleStartValue}{Value at the centre of the radar}
 
-\item{responsive}{Logical: whether or not the chart should be responsive and resize when the browser does}
+\item{responsive}{Logical. whether or not the chart should be responsive and resize when the browser does}
 
-\item{labelSize}{Numeric: Point label font size in pixels}
+\item{labelSize}{Numeric. Point label font size in pixels}
 
-\item{addDots}{Logical: Whether to show a dot for each point}
+\item{addDots}{Logical. Whether to show a dot for each point}
 
 \item{colMatrix}{Numeric matrix of rgb colour values}
 
