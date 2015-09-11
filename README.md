@@ -23,7 +23,7 @@ scores <- list(
   "Aimee Gott" = c(6, 5, 8, 4, 7, 6)
 )
 
-chartJSRadar(scores=scores, labs=labs)
+chartJSRadar(scores=scores, labs=labs, maxScore=10)
 
 
 ```

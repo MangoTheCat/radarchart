@@ -6,7 +6,7 @@
 #' @param labs Labels for each axis
 #' @param width Width of output plot
 #' @param height Height of output plot
-#' @param maxScale Max value on each axis
+#' @param maxScore Max value on each axis
 #' @param scaleStepWidth Spacing between rings on radar
 #' @param scaleStartValue Value at the centre of the radar
 #' @param responsive Logical. whether or not the chart should be responsive and resize when the browser does
@@ -28,10 +28,10 @@
 #'  "Andy" = c(7, 6, 6, 2, 6, 9),
 #'  "Aimee" = c(6, 5, 8, 4, 7, 6))
 #'
-#' chartJSRadar(scores=scores, labs=labs, maxScale=10)
+#' chartJSRadar(scores=scores, labs=labs, maxScore=10)
 #' 
 chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
-                         maxScale=NULL, scaleStepWidth=NULL, scaleStartValue=0,
+                         maxScore=NULL, scaleStepWidth=NULL, scaleStartValue=0,
                          responsive = TRUE, labelSize = 18, addDots = TRUE,
                          colMatrix = diag(3) * 255, polyAlpha = .2,
                          lineAlpha = .8, ...) {
@@ -39,8 +39,8 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   # Should we keep variable names consistent from chart.js to R?
   # Then we can just pass through anything that doesn't need preprocessing
   
-  # Check for maxScale
-  opScale <- setRadarScale(maxScale, scaleStepWidth, scaleStartValue)
+  # Check for maxScore
+  opScale <- setRadarScale(maxScore, scaleStepWidth, scaleStartValue)
 
   # Any extra options passed straight through. Names must match existing options
   # http://www.chartjs.org/docs/#getting-started-global-chart-configuration
@@ -83,7 +83,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
 
 #' Autoscale the radar plot
 #'
-#' @param maxScale Numeric length 1. Desired max limit
+#' @param maxScore Numeric length 1. Desired max limit
 #' @param scaleStepWidth Numeric length 1. Spacing between rings
 #' @param scaleStartValue Numeric length 1. Value of the centre
 #'
@@ -92,9 +92,9 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
 #' @examples
 #' setRadarScale(15, 3)
 #' setRadarScale(15, 5, 2)
-setRadarScale <- function(maxScale=NULL, scaleStepWidth=NULL, scaleStartValue=0) {
+setRadarScale <- function(maxScore=NULL, scaleStepWidth=NULL, scaleStartValue=0) {
   
-  if (!is.null(maxScale)) {
+  if (!is.null(maxScore)) {
     
     opScale <- list(scaleOverride=TRUE)
     
@@ -102,13 +102,13 @@ setRadarScale <- function(maxScale=NULL, scaleStepWidth=NULL, scaleStartValue=0)
     if (!is.null(scaleStepWidth)) {
       opScale$scaleStepWidth <- scaleStepWidth
     } else {
-      if (maxScale-scaleStartValue<=12) {
+      if (maxScore-scaleStartValue<=12) {
         opScale$scaleStepWidth <- 1
       } else {
-        opScale$scaleStepWidth <- floor((maxScale-scaleStartValue) / 10)
+        opScale$scaleStepWidth <- floor((maxScore-scaleStartValue) / 10)
       }
     }
-    opScale$scaleSteps <- ceiling((maxScale-scaleStartValue) / 
+    opScale$scaleSteps <- ceiling((maxScore-scaleStartValue) / 
                                     opScale$scaleStepWidth)
     opScale$scaleStartValue <- scaleStartValue
   } else {
