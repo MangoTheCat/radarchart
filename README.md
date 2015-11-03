@@ -1,8 +1,10 @@
 # radarchart
 
+An R implementation of the radar chart from the chart.js javascript library.
+
 To install direct from GitHub you'll need devtools installed. Assuming you have this run:
 ```r
-devtools::install_github("shaneporter/radarchart")
+devtools::install_github("MangoTheCat/radarchart")
 ```
 
 Or if you want to hack about with the code then clone the repository, change directory into it and run
