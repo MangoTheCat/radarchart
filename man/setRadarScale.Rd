@@ -20,7 +20,9 @@ A list containing the scale options for chartjs
 Autoscale the radar plot
 }
 \examples{
+\dontrun{
 setRadarScale(15, 3)
 setRadarScale(15, 5, 2)
+}
 }
 

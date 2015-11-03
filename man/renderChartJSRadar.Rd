@@ -6,6 +6,13 @@
 \usage{
 renderChartJSRadar(expr, env = parent.frame(), quoted = FALSE)
 }
+\arguments{
+\item{expr}{expression passed to \link[htmlwidgets]{shinyRenderWidget}}
+
+\item{env}{environment in which to evaluate expression}
+
+\item{quoted}{Logical. Is expression quoted?}
+}
 \description{
 Widget render function for use in Shiny
 }

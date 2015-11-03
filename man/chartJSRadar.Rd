@@ -39,7 +39,7 @@ chartJSRadar(scores, labs, width = NULL, height = NULL, maxScale = NULL,
 \item{...}{Extra options passed straight to chart.js}
 }
 \description{
-R bindings to the radar plot in the chartJS library.
+R bindings to the radar plot in the chartJS library
 }
 \examples{
 labs <- c("Communicator", "Data Wangler", "Programmer", "Technologist",  "Modeller", "Visualizer")

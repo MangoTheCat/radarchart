@@ -1,6 +1,6 @@
 #' Make a ChartJS Radar Plot
 #'
-#' R bindings to the radar plot in the chartJS library.
+#' R bindings to the radar plot in the chartJS library
 #'
 #' @param scores Named list of scores for each axis
 #' @param labs Labels for each axis
@@ -100,8 +100,10 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
 #' @return A list containing the scale options for chartjs
 #'
 #' @examples
+#' \dontrun{
 #' setRadarScale(15, 3)
 #' setRadarScale(15, 5, 2)
+#' }
 setRadarScale <- function(maxScale=NULL, scaleStepWidth=NULL, scaleStartValue=0) {
   
   if (!is.null(maxScale)) {
@@ -135,12 +137,20 @@ chartJSRadar_html <- function(id, style, class, width, height, ...){
 
 #' Widget output function for use in Shiny
 #'
+#' @param outputId output variable to read from
+#' @param width Must be valid CSS unit
+#' @param height Must be valid CSS unit
+#'
 #' @export
 chartJSRadarOutput <- function(outputId, width = '100%', height = '400px'){
   shinyWidgetOutput(outputId, 'chartJSRadar', width, height, package = 'radarchart')
 }
 
 #' Widget render function for use in Shiny
+#'
+#' @param expr expression passed to \link[htmlwidgets]{shinyRenderWidget}
+#' @param env environment in which to evaluate expression
+#' @param quoted Logical. Is expression quoted?
 #'
 #' @export
 renderChartJSRadar <- function(expr, env = parent.frame(), quoted = FALSE) {

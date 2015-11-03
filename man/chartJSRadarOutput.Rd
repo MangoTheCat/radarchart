@@ -6,6 +6,13 @@
 \usage{
 chartJSRadarOutput(outputId, width = "100\%", height = "400px")
 }
+\arguments{
+\item{outputId}{output variable to read from}
+
+\item{width}{Must be valid CSS unit}
+
+\item{height}{Must be valid CSS unit}
+}
 \description{
 Widget output function for use in Shiny
 }
