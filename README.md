@@ -1,6 +1,6 @@
 # radarchart
 
-<a href="https://travis-ci.org/mangothecat/radarchart">
+<a href="https://travis-ci.org/MangoTheCat/radarchart.svg">
 <img title="Build Status Images" src="https://travis-ci.org/mangothecat/radarchart.svg">
 </a>
 
