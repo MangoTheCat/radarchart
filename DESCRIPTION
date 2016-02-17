@@ -4,8 +4,11 @@ Version: 0.0.1.0000
 Authors@R: c(person("Shane", "Porter", email = "sporter@mango-solutions.com", role = c("aut")),
              person("Doug", "Ashton", email = "dashton@mango-solutions.com", role = c("aut", "cre")))
 Description: R bindings to the radar chart from chart.js.
-Depends: R (>= 3.1.2)
+Depends:
+    R (>= 3.1.2)
 License: MIT
 LazyData: true
-Imports: htmlwidgets,
+Imports:
+    htmlwidgets,
     htmltools
+RoxygenNote: 5.0.1

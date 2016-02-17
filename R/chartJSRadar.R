@@ -130,6 +130,15 @@ setRadarScale <- function(maxScale=NULL, scaleStepWidth=NULL, scaleStartValue=0)
   opScale
 }
 
+#' Tell htmltools where to output the chart
+#' 
+#' @param id The id of the target object
+#' @param style css stylings
+#' @param class class of the target
+#' @param width width of target
+#' @param height height of target
+#' @param ... extra arguments currently unused
+#' 
 #' @export
 chartJSRadar_html <- function(id, style, class, width, height, ...){
   htmltools::tags$canvas(id = id, class = class, width=width, height=height)
