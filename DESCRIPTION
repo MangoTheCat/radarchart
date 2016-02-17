@@ -1,6 +1,6 @@
 Package: radarchart
 Title: Radar chart using htmlwidgets
-Version: 0.0.1.0000
+Version: 0.0.1.0001
 Authors@R: c(person("Shane", "Porter", email = "sporter@mango-solutions.com", role = c("aut")),
              person("Doug", "Ashton", email = "dashton@mango-solutions.com", role = c("aut", "cre")))
 Description: R bindings to the radar chart from chart.js.
