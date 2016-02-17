@@ -1,5 +1,9 @@
 # radarchart
 
+<a href="https://travis-ci.org/mangothecat/radarchart">
+<img title="Build Status Images" src="https://travis-ci.org/mangothecat/radarchart.svg">
+</a>
+
 An R implementation of the radar chart from the chart.js javascript library.
 
 To install direct from GitHub you'll need devtools installed. Assuming you have this run:
