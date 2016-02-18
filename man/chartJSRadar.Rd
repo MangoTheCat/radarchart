@@ -36,7 +36,8 @@ chartJSRadar(scores, labs, width = NULL, height = NULL, maxScale = NULL,
 
 \item{lineAlpha}{Alpha value for the outlines}
 
-\item{...}{Extra options passed straight to chart.js}
+\item{...}{Extra options passed straight to chart.js. Names must match existing options
+\url{http://www.chartjs.org/docs/#getting-started-global-chart-configuration}}
 }
 \description{
 R bindings to the radar plot in the chartJS library

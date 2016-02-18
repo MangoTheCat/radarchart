@@ -12,10 +12,11 @@
 #' @param responsive Logical. whether or not the chart should be responsive and resize when the browser does
 #' @param labelSize Numeric. Point label font size in pixels
 #' @param addDots Logical. Whether to show a dot for each point
-#' @param colMatrix Numeric matrix of rgb colour values
+#' @param colMatrix Numeric matrix of rgb colour values. If \code{NULL} defaults are used
 #' @param polyAlpha Alpha value for the fill of polygons
 #' @param lineAlpha Alpha value for the outlines
-#' @param ... Extra options passed straight to chart.js
+#' @param ... Extra options passed straight to chart.js. Names must match existing options
+#' \url{http://www.chartjs.org/docs/#getting-started-global-chart-configuration}
 #'
 #' @import htmlwidgets
 #' @import htmltools
@@ -43,11 +44,17 @@
 chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
                          maxScale=NULL, scaleStepWidth=NULL, scaleStartValue=0,
                          responsive = TRUE, labelSize = 18, addDots = TRUE,
-                         colMatrix = diag(3) * 255, polyAlpha = .2,
+                         colMatrix = NULL, polyAlpha = .2,
                          lineAlpha = .8, ...) {
   
   # Should we keep variable names consistent from chart.js to R?
   # Then we can just pass through anything that doesn't need preprocessing
+  
+  # Colours. Perhaps replace with proper palette
+  if (is.null(colMatrix)) {
+    colMatrix <- t(grDevices::col2rgb(c("red","green", "blue", "yellow", 
+                              "magenta", "cyan", "orange", "purple", "pink")))
+  }
   
   # Check for maxScale
   opScale <- setRadarScale(maxScale, scaleStepWidth, scaleStartValue)
@@ -65,8 +72,10 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   
   for (i in seq_along(datasets)) {
     
-    fillCol <- paste0("rgba(", paste0(colMatrix[i,], collapse=","), ",", polyAlpha, ")")
-    lineCol <- paste0("rgba(", paste0(colMatrix[i,], collapse=","), ",", lineAlpha, ")")
+    iCol <- i %% nrow(colMatrix) # cyclic repeat colours
+    
+    fillCol <- paste0("rgba(", paste0(colMatrix[iCol,], collapse=","), ",", polyAlpha, ")")
+    lineCol <- paste0("rgba(", paste0(colMatrix[iCol,], collapse=","), ",", lineAlpha, ")")
     
     datasets[[i]]$data <- scores[[i]]             # Data Points
     
