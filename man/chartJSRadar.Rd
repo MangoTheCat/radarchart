@@ -6,8 +6,8 @@
 \usage{
 chartJSRadar(scores, labs, width = NULL, height = NULL, maxScale = NULL,
   scaleStepWidth = NULL, scaleStartValue = 0, responsive = TRUE,
-  labelSize = 18, addDots = TRUE, colMatrix = diag(3) * 255,
-  polyAlpha = 0.2, lineAlpha = 0.8, ...)
+  labelSize = 18, addDots = TRUE, colMatrix = NULL, polyAlpha = 0.2,
+  lineAlpha = 0.8, ...)
 }
 \arguments{
 \item{scores}{Named list of scores for each axis}
@@ -30,7 +30,7 @@ chartJSRadar(scores, labs, width = NULL, height = NULL, maxScale = NULL,
 
 \item{addDots}{Logical. Whether to show a dot for each point}
 
-\item{colMatrix}{Numeric matrix of rgb colour values}
+\item{colMatrix}{Numeric matrix of rgb colour values. If \code{NULL} defaults are used}
 
 \item{polyAlpha}{Alpha value for the fill of polygons}
 
