@@ -10,6 +10,7 @@ License: MIT + file LICENSE
 LazyData: true
 Imports:
     htmlwidgets,
-    htmltools
+    htmltools,
+    grDevices
 RoxygenNote: 5.0.1
 Suggests: testthat
