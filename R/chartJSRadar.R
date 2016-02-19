@@ -42,9 +42,9 @@
 #' chartJSRadar(scores=scores, labs=labs, maxScale =10, scaleLineWidth=5)
 #' 
 chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
-                         maxScale=NULL, scaleStepWidth=NULL, scaleStartValue=0,
-                         responsive = TRUE, labelSize = 18, addDots = TRUE,
-                         colMatrix = NULL, polyAlpha = .2,
+                         maxScale = NULL, scaleStepWidth = NULL,
+                         scaleStartValue=0, responsive = TRUE, labelSize = 18,
+                         addDots = TRUE, colMatrix = NULL, polyAlpha = .2,
                          lineAlpha = .8, ...) {
   
   # Should we keep variable names consistent from chart.js to R?
@@ -74,8 +74,10 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
     
     iCol <- i %% nrow(colMatrix) # cyclic repeat colours
     
-    fillCol <- paste0("rgba(", paste0(colMatrix[iCol,], collapse=","), ",", polyAlpha, ")")
-    lineCol <- paste0("rgba(", paste0(colMatrix[iCol,], collapse=","), ",", lineAlpha, ")")
+    fillCol <- paste0("rgba(", paste0(colMatrix[iCol,], collapse=","),
+                      ",", polyAlpha, ")")
+    lineCol <- paste0("rgba(", paste0(colMatrix[iCol,], collapse=","), 
+                      ",", lineAlpha, ")")
     
     datasets[[i]]$data <- scores[[i]]             # Data Points
     
@@ -88,15 +90,15 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
     datasets[[i]]$pointHighlightStroke <- lineCol # Point Highlight line
   }
   
-  x = list(data = list(labels=labs, datasets=datasets), options = opList)
+  x <- list(data = list(labels=labs, datasets=datasets), options = opList)
   
   # create widget
   htmlwidgets::createWidget(
-    name = 'chartJSRadar',
+    name = "chartJSRadar",
     x,
     width = width,
     height = height,
-    package = 'radarchart'
+    package = "radarchart"
   )
 }
 
@@ -113,23 +115,24 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
 #' setRadarScale(15, 3)
 #' setRadarScale(15, 5, 2)
 #' }
-setRadarScale <- function(maxScale=NULL, scaleStepWidth=NULL, scaleStartValue=0) {
+setRadarScale <- function(maxScale = NULL, scaleStepWidth = NULL, 
+                          scaleStartValue = 0) {
   
   if (!is.null(maxScale)) {
     
-    opScale <- list(scaleOverride=TRUE)
+    opScale <- list(scaleOverride = TRUE)
     
     # Did they fix the tick points?
     if (!is.null(scaleStepWidth)) {
       opScale$scaleStepWidth <- scaleStepWidth
     } else {
-      if (maxScale-scaleStartValue<=12) {
+      if (maxScale-scaleStartValue <= 12) {
         opScale$scaleStepWidth <- 1
       } else {
-        opScale$scaleStepWidth <- floor((maxScale-scaleStartValue) / 10)
+        opScale$scaleStepWidth <- floor( (maxScale-scaleStartValue) / 10)
       }
     }
-    opScale$scaleSteps <- ceiling((maxScale-scaleStartValue) / 
+    opScale$scaleSteps <- ceiling( (maxScale - scaleStartValue) / 
                                     opScale$scaleStepWidth)
     opScale$scaleStartValue <- scaleStartValue
   } else {
@@ -160,8 +163,8 @@ chartJSRadar_html <- function(id, style, class, width, height, ...){
 #' @param height Must be valid CSS unit
 #'
 #' @export
-chartJSRadarOutput <- function(outputId, width = '100%', height = '400px'){
-  shinyWidgetOutput(outputId, 'chartJSRadar', width, height, package = 'radarchart')
+chartJSRadarOutput <- function(outputId, width = "100%", height = "400px"){
+  shinyWidgetOutput(outputId, "chartJSRadar", width, height, package = "radarchart")
 }
 
 #' Widget render function for use in Shiny
@@ -172,6 +175,8 @@ chartJSRadarOutput <- function(outputId, width = '100%', height = '400px'){
 #'
 #' @export
 renderChartJSRadar <- function(expr, env = parent.frame(), quoted = FALSE) {
-  if (!quoted) { expr <- substitute(expr) } # force quoted
+  if (!quoted) { 
+    expr <- substitute(expr) 
+  } # force quoted
   shinyRenderWidget(expr, chartJSRadarOutput, env, quoted = TRUE)
 }

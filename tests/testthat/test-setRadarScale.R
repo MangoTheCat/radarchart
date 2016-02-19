@@ -1,6 +1,6 @@
 context("Radar Scale")
 
-test_that("Radar scale is running",{ 
+test_that("Radar scale is running", { 
   
   expect_equal(setRadarScale(15, 5, 2),
                structure(list(scaleOverride = TRUE, scaleStepWidth = 5, 
