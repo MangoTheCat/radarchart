@@ -1,6 +1,6 @@
 # radarchart
 
-[![Build Status](https://travis-ci.org/MangoTheCat/radarchart.svg?branch=master)](https://travis-ci.org/MangoTheCat/radarchart)
+[![Build Status](https://travis-ci.org/MangoTheCat/radarchart.svg?branch=master)](https://travis-ci.org/MangoTheCat/radarchart) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/MangoTheCat/radarchart?branch=master&svg=true)](https://ci.appveyor.com/project/MangoTheCat/radarchart)
 
 An R implementation of the radar chart from the chart.js javascript library.
 
