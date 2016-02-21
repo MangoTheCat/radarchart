@@ -45,6 +45,10 @@ the scores data set. If set to NA then labels are left blank.}
 R bindings to the radar plot in the chartJS library
 }
 \examples{
+# Using the data frame interface
+chartJSRadar(scores=skills)
+
+# Or using a list interface
 labs <- c("Communicator", "Data Wangler", "Programmer", "Technologist",  "Modeller", "Visualizer")
 
 scores <- list("Rich" = c(9, 7, 4, 5, 3, 7),

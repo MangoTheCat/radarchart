@@ -25,6 +25,10 @@
 #'
 #' @export
 #' @examples 
+#' # Using the data frame interface
+#' chartJSRadar(scores=skills)
+#' 
+#' # Or using a list interface
 #' labs <- c("Communicator", "Data Wangler", "Programmer", "Technologist",  "Modeller", "Visualizer")
 #'
 #' scores <- list("Rich" = c(9, 7, 4, 5, 3, 7),
