@@ -2,8 +2,10 @@
 #'
 #' R bindings to the radar plot in the chartJS library
 #'
-#' @param scores Named list of scores for each axis
-#' @param labs Labels for each axis
+#' @param scores Data frame or named list of scores for each axis. 
+#' If \code{labs} is not specified then labels are taken from the first column (or element).
+#' @param labs Labels for each axis. If left unspecified labels are taken from 
+#' the scores data set. If set to NA then labels are left blank.
 #' @param width Width of output plot
 #' @param height Height of output plot
 #' @param maxScale Max value on each axis
@@ -50,6 +52,20 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   # Should we keep variable names consistent from chart.js to R?
   # Then we can just pass through anything that doesn't need preprocessing
   
+  if(missing(labs)) {
+    if(is.character(scores[[1]]) | is.factor(scores[[1]])) {
+      labs <- scores[[1]] # Copy the first column of scores into the labels
+      scores[[1]] <- NULL # Drop the labels column
+    } else {
+      stop("if labs is unspecified then the first column of scores must be character data")
+    }
+  }
+
+  # If NA is supplied then put blank labels  
+  if(all(is.na(labs))) {
+    labs <- rep("", length(scores[[1]]))
+  }
+    
   # Check data is in right shape
   x <- vapply(scores, function(x) length(x)==length(labs), FALSE)
   if(!all(x)) {
