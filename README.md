@@ -24,12 +24,23 @@ labs <- c("Communicator", "Data Wangler", "Programmer",
           "Technologist",  "Modeller", "Visualizer")
 
 scores <- list(
-  "Rich Pugh" = c(9, 7, 4, 5, 3, 7),
-  "Andy Nicholls" = c(7, 6, 6, 2, 6, 9),
-  "Aimee Gott" = c(6, 5, 8, 4, 7, 6)
+  "Rich" = c(9, 7, 4, 5, 3, 7),
+  "Andy" = c(7, 6, 6, 2, 6, 9),
+  "Aimee" = c(6, 5, 8, 4, 7, 6)
 )
 
 chartJSRadar(scores = scores, labs = labs, maxScale = 10)
-
-
 ```
+
+Alternatively, you may supply a data frame and `chartJSRadar` will pickup the labels from the first column of the data.
+
+```r
+scores <- data.frame("Label"=c("Communicator", "Data Wangler", "Programmer",
+                     "Technologist",  "Modeller", "Visualizer"),
+                     "Rich" = c(9, 7, 4, 5, 3, 7),
+                     "Andy" = c(7, 6, 6, 2, 6, 9),
+                     "Aimee" = c(6, 5, 8, 4, 7, 6))
+
+chartJSRadar(scores, maxScale = 10)
+```
+
