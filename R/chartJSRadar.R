@@ -43,7 +43,7 @@
 #' 
 chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
                          maxScale = NULL, scaleStepWidth = NULL,
-                         scaleStartValue=0, responsive = TRUE, labelSize = 18,
+                         scaleStartValue = 0, responsive = TRUE, labelSize = 18,
                          addDots = TRUE, colMatrix = NULL, polyAlpha = .2,
                          lineAlpha = .8, ...) {
   
@@ -52,8 +52,8 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   
   # Colours. Perhaps replace with proper palette
   if (is.null(colMatrix)) {
-    colMatrix <- t(grDevices::col2rgb(c("red","green", "blue", "yellow", 
-                              "magenta", "cyan", "orange", "purple", "pink")))
+    colMatrix <- grDevices::col2rgb(c("red","green", "blue", "yellow", 
+                              "magenta", "cyan", "orange", "purple", "pink"))
   }
   
   # Check for maxScale
@@ -72,11 +72,11 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   
   for (i in seq_along(datasets)) {
     
-    iCol <- i %% nrow(colMatrix) # cyclic repeat colours
-    
-    fillCol <- paste0("rgba(", paste0(colMatrix[iCol,], collapse=","),
+    iCol <- (i-1) %% ncol(colMatrix) + 1 # cyclic repeat colours
+
+    fillCol <- paste0("rgba(", paste0(colMatrix[ , iCol], collapse=","),
                       ",", polyAlpha, ")")
-    lineCol <- paste0("rgba(", paste0(colMatrix[iCol,], collapse=","), 
+    lineCol <- paste0("rgba(", paste0(colMatrix[ , iCol], collapse=","), 
                       ",", lineAlpha, ")")
     
     datasets[[i]]$data <- scores[[i]]             # Data Points
