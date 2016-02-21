@@ -8,6 +8,8 @@ Depends:
     R (>= 3.1.2)
 License: MIT + file LICENSE
 LazyData: true
+URL: https://github.com/mangothecat/radarchart
+BugReports: https://github.com/mangothecat/radarchart/issues
 Imports:
     htmlwidgets,
     htmltools,
