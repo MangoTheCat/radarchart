@@ -1,0 +1,43 @@
+---
+title: "Preparing Data for `radarchart`"
+author: "Doug Ashton"
+date: "21 February 2016"
+output: html_document
+---
+
+The `radarchart` package expects data to be in a format whereby each row corresponds to an axis on the chart (or a `Label`) and each column is a set of scores. An example is the built in data set, `skills`.
+
+```{r}
+library(radarchart)
+skills
+```
+
+In many cases your data will have a column for each axis, and each row is a set of observations. In the `skills` example we might build up a spreadsheet where each row is a person and each column a skill.
+
+```{r}
+skillsByName
+```
+
+In order to use this data set with `radarchart` we need to *rotate* it. This can be done with packages such as `tidyr`.
+
+```{r, tidyR}
+library(tidyr)
+skillsByLabel <- gather(skillsByName, key=Label, value=Score, -Name) %>%
+                   spread(key=Name, value=Score)
+skillsByLabel
+```
+
+If you don't want to have a dependency on `tidyr` then you can do the same thing using a few lines of base `R` code.
+
+```{r, baseR}
+skillsByLabel <- as.data.frame(t(skillsByName[,-1]))
+names(skillsByLabel) <- skillsByName$Name
+skillsByLabel <- cbind(Label=row.names(skillsByLabel), skillsByLabel)
+row.names(skillsByLabel) <- NULL
+```
+
+This rotated data set is now ready for use with `radarchart`.
+
+```{r, eval=FALSE}
+chartJSRadar(scores = skillsByLabel, maxScale = 10)
+```

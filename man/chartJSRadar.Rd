@@ -10,9 +10,11 @@ chartJSRadar(scores, labs, width = NULL, height = NULL, maxScale = NULL,
   lineAlpha = 0.8, ...)
 }
 \arguments{
-\item{scores}{Named list of scores for each axis}
+\item{scores}{Data frame or named list of scores for each axis. 
+If \code{labs} is not specified then labels are taken from the first column (or element).}
 
-\item{labs}{Labels for each axis}
+\item{labs}{Labels for each axis. If left unspecified labels are taken from 
+the scores data set. If set to NA then labels are left blank.}
 
 \item{width}{Width of output plot}
 
