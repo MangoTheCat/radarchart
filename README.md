@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/MangoTheCat/radarchart.svg?branch=master)](https://travis-ci.org/MangoTheCat/radarchart) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/MangoTheCat/radarchart?branch=master&svg=true)](https://ci.appveyor.com/project/MangoTheCat/radarchart)
 
-An R implementation of the radar chart from the chart.js javascript library.
+An R implementation of the radar chart from the [chart.js](http://www.chartjs.org/) javascript library.
 
 To install direct from GitHub you'll need devtools installed. Assuming you have this run:
 ```r
