@@ -50,6 +50,12 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   # Should we keep variable names consistent from chart.js to R?
   # Then we can just pass through anything that doesn't need preprocessing
   
+  # Check data is in right shape
+  x <- vapply(scores, function(x) length(x)==length(labs), FALSE)
+  if(!all(x)) {
+    stop("Each score vector must be the same length as the labs vector")
+  }
+  
   # Colours. Perhaps replace with proper palette
   if (is.null(colMatrix)) {
     colMatrix <- grDevices::col2rgb(c("red","green", "blue", "yellow", 
