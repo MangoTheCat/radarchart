@@ -1,5 +1,5 @@
 Package: radarchart
-Title: Radar chart using htmlwidgets
+Title: Radar Chart from Chart.js
 Version: 0.0.2.9000
 Authors@R: c(person("Shane", "Porter", email = "sporter@mango-solutions.com", role = c("aut")),
              person("Doug", "Ashton", email = "dashton@mango-solutions.com", role = c("aut", "cre")))
