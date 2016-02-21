@@ -1,8 +1,12 @@
 ---
 title: "Preparing Data for `radarchart`"
 author: "Doug Ashton"
-date: "21 February 2016"
-output: html_document
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Preparing Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 The `radarchart` package expects data to be in a format whereby each row corresponds to an axis on the chart (or a `Label`) and each column is a set of scores. An example is the built in data set, `skills`.
