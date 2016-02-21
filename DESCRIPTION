@@ -1,8 +1,9 @@
 Package: radarchart
 Title: Radar Chart from Chart.js
 Version: 0.0.2.9000
-Authors@R: c(person("Shane", "Porter", email = "sporter@mango-solutions.com", role = c("aut")),
-             person("Doug", "Ashton", email = "dashton@mango-solutions.com", role = c("aut", "cre")))
+Authors@R: c(person("Doug", "Ashton", email = "dashton@mango-solutions.com", role = c("aut", "cre")),
+             person("Shane", "Porter", email = "sporter@mango-solutions.com", role = c("aut")),
+             person("Nick", "Downie", role = c("aut")))
 Description: R bindings to the radar chart from chart.js.
 Depends:
     R (>= 3.1.2)
