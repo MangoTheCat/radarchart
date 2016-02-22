@@ -33,8 +33,10 @@ scores <- list(
 
 chartJSRadar(scores = scores, labs = labs, maxScale = 10)
 ```
+<img src="inst/figs/readmePlot01.jpg" alt="Static image of example output"  />
+<p class="caption">Static version. Real plots are interactive</p>
 
-Alternatively, you may supply a data frame and `chartJSRadar` will pickup the labels from the first column of the data.
+Alternatively, you may supply a data frame and `chartJSRadar` will pickup the labels from the first column of the data. Also we're showing an option to display data set labels in the mouse over.
 
 ```r
 scores <- data.frame("Label"=c("Communicator", "Data Wangler", "Programmer",
@@ -43,6 +45,7 @@ scores <- data.frame("Label"=c("Communicator", "Data Wangler", "Programmer",
                      "Andy" = c(7, 6, 6, 2, 6, 9),
                      "Aimee" = c(6, 5, 8, 4, 7, 6))
 
-chartJSRadar(scores, maxScale = 10)
+chartJSRadar(scores, maxScale = 10, showToolTipLabel=TRUE)
 ```
-
+<img src="inst/figs/readmePlot02.jpg" alt="Static image of example output"  />
+<p class="caption">Static version. Real plots are interactive</p>
