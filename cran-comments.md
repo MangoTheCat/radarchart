@@ -16,6 +16,6 @@ This is a new release, so there are no reverse dependencies.
 
 ## Other Software
 
-This package includes the [chart.js](http://www.chartjs.org) JavaScript library that is released under the MIT license. The LICENSE file from its [GitHub repository](https://github.com/nnnick/Chart.js) has been added to the LICENSE file in this package.
+This package includes the [chart.js](http://www.chartjs.org) JavaScript library that is released under the MIT license. See info at the [GitHub repository](https://github.com/nnnick/Chart.js). The copyright owner for this package has been included in the LICENSE file.
 
 The author of chart.js has been informed by email of this R package and has been listed as a contributor in the DESCRIPTION file.
