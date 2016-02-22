@@ -17,6 +17,7 @@
 #' @param colMatrix Numeric matrix of rgb colour values. If \code{NULL} defaults are used
 #' @param polyAlpha Alpha value for the fill of polygons
 #' @param lineAlpha Alpha value for the outlines
+#' @param showToolTipLabel Logical. If \code{TRUE} then data set labels are shown in the tooltip hover over
 #' @param ... Extra options passed straight to chart.js. Names must match existing options
 #' \url{http://www.chartjs.org/docs/#getting-started-global-chart-configuration}
 #'
@@ -51,7 +52,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
                          maxScale = NULL, scaleStepWidth = NULL,
                          scaleStartValue = 0, responsive = TRUE, labelSize = 18,
                          addDots = TRUE, colMatrix = NULL, polyAlpha = .2,
-                         lineAlpha = .8, ...) {
+                         lineAlpha = .8, showToolTipLabel = FALSE, ...) {
   
   # Should we keep variable names consistent from chart.js to R?
   # Then we can just pass through anything that doesn't need preprocessing
@@ -93,6 +94,14 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   opList <- c(list( responsive = responsive, pointLabelFontSize = labelSize,
                   pointDot = addDots), opScale, opPassThrough)
   
+  # Apply a switch as to whether the dataset names should show up on the hover over
+  # If they set the global option themselves this will take priority
+  if(!("multiTooltipTemplate" %in% names(opList))) {
+    if(showToolTipLabel) {
+      opList$multiTooltipTemplate <- "<%= value %> - <%= datasetLabel %>"
+    }
+  }
+    
   # forward options using x
   datasets <- lapply(names(scores), function(x) list(label=x))
   

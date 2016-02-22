@@ -7,7 +7,7 @@
 chartJSRadar(scores, labs, width = NULL, height = NULL, maxScale = NULL,
   scaleStepWidth = NULL, scaleStartValue = 0, responsive = TRUE,
   labelSize = 18, addDots = TRUE, colMatrix = NULL, polyAlpha = 0.2,
-  lineAlpha = 0.8, ...)
+  lineAlpha = 0.8, showToolTipLabel = FALSE, ...)
 }
 \arguments{
 \item{scores}{Data frame or named list of scores for each axis. 
@@ -37,6 +37,8 @@ the scores data set. If set to NA then labels are left blank.}
 \item{polyAlpha}{Alpha value for the fill of polygons}
 
 \item{lineAlpha}{Alpha value for the outlines}
+
+\item{showToolTipLabel}{Logical. If \code{TRUE} then data set labels are shown in the tooltip hover over}
 
 \item{...}{Extra options passed straight to chart.js. Names must match existing options
 \url{http://www.chartjs.org/docs/#getting-started-global-chart-configuration}}
