@@ -1,3 +1,7 @@
+## Updated in this version
+
+* Expanded description field that explains Chart.js and provides a link
+
 ## Test environments
 * local OS X install, R 3.2.3
 * ubuntu 12.04 (on travis-ci), R 3.2.3
