@@ -1,7 +1,9 @@
 
-## 0.1.0
+### 0.1.1.9000
 
-This will be the first CRAN release.
+## 0.1.1
+
+First CRAN release
 
 ### 0.0.2
 
