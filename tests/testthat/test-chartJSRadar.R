@@ -10,10 +10,7 @@ test_that("chartJSRadar takes scores and labels", {
 
   a <- chartJSRadar(scores=scores, labs=labs, maxScale=10)
   
-  # Check a few items for basic correctness
-  expect_equal(names(a), c("x", "width", "height", "sizingPolicy", 
-                           "dependencies", "elementId", "preRenderHook"))
-  
+  # Check data made it in
   expect_equal(a$x$options,
                structure(list(responsive = TRUE, pointLabelFontSize = 18, 
                               pointDot = TRUE, scaleOverride = TRUE, scaleStepWidth = 1, 
