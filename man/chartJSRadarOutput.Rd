@@ -4,7 +4,7 @@
 \alias{chartJSRadarOutput}
 \title{Widget output function for use in Shiny}
 \usage{
-chartJSRadarOutput(outputId, width = "100\%", height = "400px")
+chartJSRadarOutput(outputId, width = "450", height = "300")
 }
 \arguments{
 \item{outputId}{output variable to read from}
