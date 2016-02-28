@@ -1,5 +1,7 @@
 
-### 0.1.1.9000
+### 0.1.2
+
+Fix test error with new htmlwidgets version
 
 ## 0.1.1
 

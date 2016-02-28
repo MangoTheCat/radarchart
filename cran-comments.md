@@ -1,6 +1,6 @@
 ## Updated in this version
 
-* Expanded description field that explains Chart.js and provides a link
+* Fixed a test that was failing with the new htmlwidgets version
 
 ## Test environments
 * local OS X install, R 3.2.3
@@ -9,17 +9,11 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 1 notes
 
-* This is a new release.
-* A message in the win-builder check mentions the title including Chart.js as a possible spelling mistake. As I understand it this is how the library name is formatted on the [chart.js](http://www.chartjs.org) website.
+This package has been updated quickly after a release due to a dependency upgrade (htmlwidgets)
 
 ## Reverse dependencies
 
-This is a new release, so there are no reverse dependencies.
+There are no reverse dependencies.
 
-## Other Software
-
-This package includes the [chart.js](http://www.chartjs.org) JavaScript library that is released under the MIT license. See info at the [GitHub repository](https://github.com/nnnick/Chart.js). The copyright owner for this package has been included in the LICENSE file.
-
-The author of chart.js has been informed by email of this R package and has been listed as a contributor in the DESCRIPTION file.
