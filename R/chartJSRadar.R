@@ -198,7 +198,7 @@ chartJSRadar_html <- function(id, style, class, width, height, ...){
 #' @param height Must be valid CSS unit
 #'
 #' @export
-chartJSRadarOutput <- function(outputId, width = "100%", height = "400px"){
+chartJSRadarOutput <- function(outputId, width = "450", height = "300"){
   shinyWidgetOutput(outputId, "chartJSRadar", width, height, package = "radarchart")
 }
 
