@@ -57,15 +57,27 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   # Should we keep variable names consistent from chart.js to R?
   # Then we can just pass through anything that doesn't need preprocessing
   
+  # If it comes through as a single vector wrap it back up
+  if(!is.list(scores)) scores <- list(scores)
+
+  # This block trys to handle different ways the data might
+  # not look how we expect. Missings etc.
   if(missing(labs)) {
     if(is.character(scores[[1]]) | is.factor(scores[[1]])) {
       labs <- scores[[1]] # Copy the first column of scores into the labels
-      scores[[1]] <- NULL # Drop the labels column
+      if (length(scores) > 1) { # This catches empty data
+        scores[[1]] <- NULL # Drop the labels column
+      } else {
+        # Add a dummy column with no data
+        scores <- data.frame("null"=rep(NA, length(labs)))
+      }
     } else {
       stop("if labs is unspecified then the first column of scores must be character data")
     }
   }
 
+  
+  
   # If NA is supplied then put blank labels  
   if(all(is.na(labs))) {
     labs <- rep("", length(scores[[1]]))
