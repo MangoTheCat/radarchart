@@ -1,4 +1,4 @@
-### 0.1.3
+### 0.1.3 (dev)
 
 - Added basic shiny example
 
