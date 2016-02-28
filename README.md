@@ -49,3 +49,14 @@ chartJSRadar(scores, maxScale = 10, showToolTipLabel=TRUE)
 ```
 <img src="inst/figs/readmePlot02.jpg" alt="Static image of example output"  />
 <p class="caption">Static version. Real plots are interactive</p>
+
+## Shiny
+
+As it's based on htmlwidgets it's easy to use `radarchart` with Shiny. Just use the 
+
+```r
+chartJSRadarOutput("ID", width = "450", height = "300")
+```
+function in your `ui.R` and call `chartJSRadar` as normal in your `server.R`. A minimal example can be found in [`inst/shiny-examples/basic`](https://github.com/MangoTheCat/radarchart/tree/master/inst/shiny-examples/basic).
+
+
