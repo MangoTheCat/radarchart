@@ -1,3 +1,6 @@
+### 0.1.3
+
+- Added basic shiny example
 
 ### 0.1.2
 
