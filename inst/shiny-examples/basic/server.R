@@ -1,6 +1,5 @@
 library(radarchart)
 
-
 shinyServer(function(input, output) {
   output$radar <- renderChartJSRadar({
     
