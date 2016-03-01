@@ -8,7 +8,14 @@
 
 An R implementation of the radar chart from the [chart.js](http://www.chartjs.org/) javascript library.
 
-To install direct from GitHub you'll need devtools installed. Assuming you have this run:
+## Installation
+
+You can install from CRAN.
+```r
+install.packages("radarchart")
+```
+
+To install the latest version direct from GitHub you'll need devtools installed. Assuming you have this run:
 ```r
 devtools::install_github("MangoTheCat/radarchart")
 ```
@@ -20,6 +27,7 @@ devtools::install()
 
 Note: `htmlwidgets` packages don't work well with `devtools::load_all()`. Once installed you can make a radar chart
 
+## Usage
 
 ```r
 library(radarchart)
