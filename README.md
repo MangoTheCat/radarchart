@@ -72,3 +72,6 @@ chartJSRadarOutput("ID", width = "450", height = "300")
 function in your `ui.R` and call `chartJSRadar` as normal in your `server.R`. A minimal example can be found in [`inst/shiny-examples/basic`](https://github.com/MangoTheCat/radarchart/tree/master/inst/shiny-examples/basic).
 
 
+## License
+
+MIT © Mango Solutions, Nick Downie
