@@ -25,9 +25,11 @@ Or if you want to hack about with the code then clone the repository, change dir
 devtools::install()
 ```
 
-Note: `htmlwidgets` packages don't work well with `devtools::load_all()`. Once installed you can make a radar chart
+Note: `htmlwidgets` packages don't work well with `devtools::load_all()`.
 
 ## Usage
+
+Once installed you can make a radar chart
 
 ```r
 library(radarchart)
