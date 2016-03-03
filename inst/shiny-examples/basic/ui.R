@@ -1,3 +1,4 @@
+library(radarchart)
 
 shinyUI(pageWithSidebar(
   headerPanel('Radarchart Shiny Example'),
