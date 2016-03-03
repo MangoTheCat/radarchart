@@ -16,6 +16,7 @@ shinyUI(pageWithSidebar(
                  value = 0, min = NA, max = NA, step = 1)
   ),
   mainPanel(
-    chartJSRadarOutput("radar", width = "450", height = "300"), width = 7
+    chartJSRadarOutput("radar", width = "450", height = "300"), 
+    code(textOutput("radarCall")), width = 7
   )
 ))
