@@ -2,6 +2,9 @@ library(radarchart)
 
 shinyServer(function(input, output) {
   
+  # Build the "call" statement
+  # This is supposed to be the call made to chartJSRadar that would give the
+  # current plot
   output$radarCall <- reactive({
     
     sk <- paste0("skills[, c(\"Label\"," ,
@@ -14,8 +17,19 @@ shinyServer(function(input, output) {
                  ifelse(input$scaleStepWidth>0, input$scaleStepWidth, "NULL"))
     sv <- paste0("scaleStartValue = ", input$scaleStartValue)
     
+    ls <- paste0("labelSize = ", input$labelSize)
     
-    arguments <- c(sk, ms, sw, sv)
+    ad <- paste0("addDots = ", as.character(input$addDots))
+    
+    tt <- paste0("showToolTipLabel = ", as.character(input$showToolTipLabel))
+    
+    la <- paste0("lineAlpha = ", input$lineAlpha)
+    
+    pa <- paste0("polyAlpha = ", input$polyAlpha)
+    
+    rs <- paste0("responsive = ", as.character(input$responsive))
+    
+    arguments <- c(sk, ms, sw, sv, rs, ls, ad, la, pa, tt)
     
     arguments[1] <- paste0("chartJSRadar(", arguments[1])
     arguments[length(arguments)] <- paste0(arguments[length(arguments)], ")")
@@ -24,6 +38,8 @@ shinyServer(function(input, output) {
     
   })
   
+  # This is because the 0 represents NULL thing is hard to feed directly to the
+  # chartJSRadar call
   output$radar <- renderChartJSRadar({
     
     # Convert zero to a NULL
@@ -41,10 +57,16 @@ shinyServer(function(input, output) {
         NULL
     })
     
+    # The main call
     chartJSRadar(skills[, c("Label", input$selectedPeople)], 
                  maxScale = maxScaleR(),
                  scaleStepWidth = scaleStepWidthR(),
                  scaleStartValue = input$scaleStartValue,
-                 showToolTipLabel=TRUE)
+                 responsive = input$responsive,
+                 labelSize = input$labelSize,
+                 addDots = input$addDots,
+                 lineAlpha = input$lineAlpha,
+                 polyAlpha = input$polyAlpha,
+                 showToolTipLabel=input$showToolTipLabel)
   })
 })
