@@ -5,6 +5,18 @@ shinyServer(function(input, output) {
   # Build the "call" statement
   # This is supposed to be the call made to chartJSRadar that would give the
   # current plot
+  
+  output$colMatText <- renderUI({
+    cmValue <- reactive({
+      if (input$colMat == "Named") {
+        'col2rgb(c("red", "forestgreen", "navyblue"))'
+      } else {
+        "matrix(c(255, 0, 0, 34, 139, 34, 0, 0, 128), nrow = 3)"
+      }
+    })
+    textInput("colMatValue", "Code: ", value=cmValue())
+  })
+  
   output$radarCall <- reactive({
     
     sk <- paste0("skills[, c(\"Label\"," ,
@@ -29,13 +41,24 @@ shinyServer(function(input, output) {
     
     rs <- paste0("responsive = ", as.character(input$responsive))
     
-    arguments <- c(sk, ms, sw, sv, rs, ls, ad, la, pa, tt)
+    cm <- paste0("colMatrix = ", input$colMatValue)
+
+    arguments <- c(sk, ms, sw, sv, rs, ls, ad, la, pa, tt, cm)
     
     arguments[1] <- paste0("chartJSRadar(", arguments[1])
     arguments[length(arguments)] <- paste0(arguments[length(arguments)], ")")
     
     paste(arguments, sep="", collapse=", ")
     
+  })
+  
+
+  cmText <- eventReactive(input$colButton, {
+    if(!is.null(input$colMatValue)) {
+      eval(parse(text=input$colMatValue))
+    } else {
+      NULL
+    }
   })
   
   # This is because the 0 represents NULL thing is hard to feed directly to the
@@ -56,7 +79,7 @@ shinyServer(function(input, output) {
       else
         NULL
     })
-    
+
     # The main call
     chartJSRadar(skills[, c("Label", input$selectedPeople)], 
                  maxScale = maxScaleR(),
@@ -67,6 +90,8 @@ shinyServer(function(input, output) {
                  addDots = input$addDots,
                  lineAlpha = input$lineAlpha,
                  polyAlpha = input$polyAlpha,
-                 showToolTipLabel=input$showToolTipLabel)
+                 showToolTipLabel=input$showToolTipLabel,
+                 colMatrix = cmText())
   })
+  
 })

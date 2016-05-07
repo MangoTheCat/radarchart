@@ -25,11 +25,17 @@ shinyUI(pageWithSidebar(
     
     checkboxInput("showToolTipLabel", "showToolTipLabel", value = FALSE),
     
-    checkboxInput("responsive", "responsive", value = TRUE)
+    checkboxInput("responsive", "responsive", value = TRUE),
     
+    radioButtons("colMat", "colMatrix", choices=c("Matrix", "Named"), 
+                 selected = "Named", inline = TRUE),
+    
+    uiOutput("colMatText"),
+    actionButton("colButton", "Update")
     
   ),
   mainPanel(
+    textOutput("test"),
     p("Try changing the options in the side panel and then copy the function call that produces it."),
     chartJSRadarOutput("radar", width = "450", height = "300"), 
     code(textOutput("radarCall")), width = 7
