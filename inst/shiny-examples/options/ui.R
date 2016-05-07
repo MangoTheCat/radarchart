@@ -31,11 +31,10 @@ shinyUI(pageWithSidebar(
                  selected = "Named", inline = TRUE),
     
     uiOutput("colMatText"),
-    actionButton("colButton", "Update")
+    submitButton("Update")
     
   ),
   mainPanel(
-    textOutput("test"),
     p("Try changing the options in the side panel and then copy the function call that produces it."),
     chartJSRadarOutput("radar", width = "450", height = "300"), 
     code(textOutput("radarCall")), width = 7

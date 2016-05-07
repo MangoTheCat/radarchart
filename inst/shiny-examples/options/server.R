@@ -53,7 +53,8 @@ shinyServer(function(input, output) {
   })
   
 
-  cmText <- eventReactive(input$colButton, {
+  #cmText <- eventReactive(input$colButton,
+  cmText <- reactive( {
     if(!is.null(input$colMatValue)) {
       eval(parse(text=input$colMatValue))
     } else {
