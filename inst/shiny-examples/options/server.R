@@ -6,6 +6,16 @@ shinyServer(function(input, output) {
   # This is supposed to be the call made to chartJSRadar that would give the
   # current plot
   
+  v <- reactiveValues( cmText = col2rgb(c("red", "forestgreen", "navyblue")))
+  
+  observeEvent(input$colButton, {
+    if(!is.null(input$colMatValue)) {
+      v$cmText <- eval(parse(text=input$colMatValue))
+    } else {
+      v$cmText <- NULL
+    }
+  })
+  
   output$colMatText <- renderUI({
     cmValue <- reactive({
       if (input$colMat == "Named") {
@@ -52,15 +62,6 @@ shinyServer(function(input, output) {
     
   })
   
-
-  #cmText <- eventReactive(input$colButton,
-  cmText <- reactive( {
-    if(!is.null(input$colMatValue)) {
-      eval(parse(text=input$colMatValue))
-    } else {
-      NULL
-    }
-  })
   
   # This is because the 0 represents NULL thing is hard to feed directly to the
   # chartJSRadar call
@@ -92,7 +93,7 @@ shinyServer(function(input, output) {
                  lineAlpha = input$lineAlpha,
                  polyAlpha = input$polyAlpha,
                  showToolTipLabel=input$showToolTipLabel,
-                 colMatrix = cmText())
+                 colMatrix = v$cmText)
   })
   
 })

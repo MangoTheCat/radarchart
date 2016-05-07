@@ -31,7 +31,7 @@ shinyUI(pageWithSidebar(
                  selected = "Named", inline = TRUE),
     
     uiOutput("colMatText"),
-    submitButton("Update")
+    actionButton("colButton", "Update")
     
   ),
   mainPanel(
