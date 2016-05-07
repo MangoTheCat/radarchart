@@ -30,6 +30,7 @@ shinyUI(pageWithSidebar(
     
   ),
   mainPanel(
+    p("Try changing the options in the side panel and then copy the function call that produces it."),
     chartJSRadarOutput("radar", width = "450", height = "300"), 
     code(textOutput("radarCall")), width = 7
   )
