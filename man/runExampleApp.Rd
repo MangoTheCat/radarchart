@@ -2,7 +2,7 @@
 % Please edit documentation in R/runExample.R
 \name{runExampleApp}
 \alias{runExampleApp}
-\title{Title}
+\title{Run an example Shiny app}
 \usage{
 runExampleApp(example)
 }
@@ -10,7 +10,9 @@ runExampleApp(example)
 \item{example}{the name of the example. Choose from "basic" or "options"}
 }
 \description{
-Title
+The radarchart package contains a number of demo Shiny apps to illustrate how
+to use the plots. The code is in \code{inst/shiny-examples/} and running this
+function will allow quick access to the apps.
 }
 \examples{
 \dontrun{
