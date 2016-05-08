@@ -10,7 +10,9 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 notes
+
+The note is an auto spell check of js. This is from the name of the JavaScript library, chart.js.
 
 ## Reverse dependencies
 
