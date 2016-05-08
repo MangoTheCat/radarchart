@@ -69,12 +69,13 @@ As it's based on htmlwidgets it's easy to use `radarchart` with Shiny. Just use 
 ```r
 chartJSRadarOutput("ID", width = "450", height = "300")
 ```
-function in your `ui.R` and call `chartJSRadar` as normal in your `server.R`. A minimal example can be found in [`inst/shiny-examples/basic`](https://github.com/MangoTheCat/radarchart/tree/master/inst/shiny-examples/basic). You can run this with
+function in your `ui.R` and call `chartJSRadar` as normal in your `server.R`. A minimal example can be found in [`inst/shiny-examples/basic`](https://github.com/MangoTheCat/radarchart/tree/master/inst/shiny-examples/basic). You can run this with the `runExampleApp` function
 
 ```r
-shiny::runApp(system.file("shiny-examples", "basic", package="radarchart"))
+shiny::runExampleApp("basic")
 ```
 
+An `"options"` app is available to help construct more customised radar charts.
 
 ## License
 
