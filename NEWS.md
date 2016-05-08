@@ -4,6 +4,7 @@
 - Change Shiny defaults so the canvas isn't huge [issue 3](https://github.com/MangoTheCat/radarchart/issues/3)
 - Added basic shiny example
 - Added options shiny example
+- runExample function to easily access the shiny apps
 
 ### 0.1.2
 
