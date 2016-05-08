@@ -1,4 +1,4 @@
-### 0.1.3 (dev)
+### 0.2.0
 
 - Plots with no data will render (with no data) [issue 5](https://github.com/MangoTheCat/radarchart/issues/5)
 - Change Shiny defaults so the canvas isn't huge [issue 3](https://github.com/MangoTheCat/radarchart/issues/3)
