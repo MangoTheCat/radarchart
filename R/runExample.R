@@ -5,7 +5,7 @@
 #' to use the plots. The code is in \code{inst/shiny-examples/} and running this
 #' function will allow quick access to the apps.
 #'
-#' @param example the name of the example. Choose from "basic" or "options"
+#' @param example the name of the example. Choose from "basic" or "options".
 #'
 #' @export
 #'

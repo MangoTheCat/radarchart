@@ -7,7 +7,7 @@
 runExampleApp(example)
 }
 \arguments{
-\item{example}{the name of the example. Choose from "basic" or "options"}
+\item{example}{the name of the example. Choose from "basic" or "options".}
 }
 \description{
 The radarchart package contains a number of demo Shiny apps to illustrate how
