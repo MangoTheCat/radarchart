@@ -89,11 +89,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
     stop("Each score vector must be the same length as the labs vector")
   }
   
-  # Colours. Perhaps replace with proper palette
-  if (is.null(colMatrix)) {
-    colMatrix <- grDevices::col2rgb(c("red", "green", "blue", "yellow", 
-                              "magenta", "cyan", "orange", "purple", "pink"))
-  }
+  colMatrix <- colourMatrix(colMatrix)
   
   # Check for maxScale
   opScale <- setRadarScale(maxScale, scaleStepWidth, scaleStartValue)
