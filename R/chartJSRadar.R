@@ -91,7 +91,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   
   # Colours. Perhaps replace with proper palette
   if (is.null(colMatrix)) {
-    colMatrix <- grDevices::col2rgb(c("red","green", "blue", "yellow", 
+    colMatrix <- grDevices::col2rgb(c("red", "green", "blue", "yellow", 
                               "magenta", "cyan", "orange", "purple", "pink"))
   }
   
