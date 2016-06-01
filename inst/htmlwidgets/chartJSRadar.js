@@ -10,8 +10,7 @@ HTMLWidgets.widget({
 
     return {
        ctx: ctx
-    }
-
+    };
   },
 
   renderValue: function(el, x, instance) {
