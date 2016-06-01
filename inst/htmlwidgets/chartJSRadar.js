@@ -9,7 +9,7 @@ HTMLWidgets.widget({
     var ctx = el.getContext("2d");
 
     return {
-       Chartjs: ctx
+       ctx: ctx
     }
 
   },
