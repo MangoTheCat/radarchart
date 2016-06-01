@@ -126,11 +126,11 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
     
     datasets[[i]]$backgroundColor  <- fillCol           # Polygon Fill
     datasets[[i]]$borderColor  <- lineCol         # Line Colour
-    datasets[[i]]$pointColor  <- lineCol          # Point colour
+    datasets[[i]]$pointBackgroundColor  <- lineCol          # Point colour
     
-    datasets[[i]]$pointStrokeColor  <- "#fff"     # Point outline
-    datasets[[i]]$pointHighlightFill  <- "#fff"   # Point Highlight fill
-    datasets[[i]]$pointHighlightStroke <- lineCol # Point Highlight line
+    datasets[[i]]$pointBorderColor  <- "#fff"     # Point outline
+    datasets[[i]]$pointHoverBackgroundColor  <- "#fff"   # Point Highlight fill
+    datasets[[i]]$pointHoverBorderColor <- lineCol # Point Highlight line
   }
   
   x <- list(data = list(labels=labs, datasets=datasets), options = opList)
