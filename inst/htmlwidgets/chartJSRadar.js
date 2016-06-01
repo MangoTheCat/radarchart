@@ -6,10 +6,10 @@ HTMLWidgets.widget({
 
   initialize: function(el, width, height) {
 
-    var Chartjs = new Chart(el.getContext("2d"));
+    var ctx = el.getContext("2d");
 
     return {
-       Chartjs: Chartjs
+       Chartjs: ctx
     }
 
   },
@@ -18,7 +18,11 @@ HTMLWidgets.widget({
 
     
     // Get the context of the canvas element we want to select
-    var myRadarChart = instance.Chartjs.Radar(x.data, x.options);
+    var myRadarChart = new Chart(instance.ctx, {
+        type: 'radar',
+        data: x.data,
+        options: x.options
+    });
 
 
   },
