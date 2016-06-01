@@ -124,8 +124,8 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
     
     datasets[[i]]$data <- scores[[i]]             # Data Points
     
-    datasets[[i]]$fillColor  <- fillCol           # Polygon Fill
-    datasets[[i]]$strokeColor  <- lineCol         # Line Colour
+    datasets[[i]]$backgroundColor  <- fillCol           # Polygon Fill
+    datasets[[i]]$borderColor  <- lineCol         # Line Colour
     datasets[[i]]$pointColor  <- lineCol          # Point colour
     
     datasets[[i]]$pointStrokeColor  <- "#fff"     # Point outline
