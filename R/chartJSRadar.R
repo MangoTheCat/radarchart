@@ -92,7 +92,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   colMatrix <- colourMatrix(colMatrix)
   
   # Check for maxScale
-  opScale <- setRadarScale(maxScale, scaleStepWidth, scaleStartValue)
+  opScale <- list(scale = setRadarScale(maxScale, scaleStepWidth, scaleStartValue))
 
   # Any extra options passed straight through. Names must match existing options
   # http://www.chartjs.org/docs/#getting-started-global-chart-configuration
@@ -163,25 +163,32 @@ setRadarScale <- function(maxScale = NULL, scaleStepWidth = NULL,
   
   if (!is.null(maxScale)) {
     
-    opScale <- list(scaleOverride = TRUE)
+    opScale <- list(ticks = list(max = maxScale))
+    if(scaleStartValue == 0) {
+      opScale$ticks$min <- 0
+    } else {
+      opScale$ticks$min <- scaleStartValue
+    }
     
     # Did they fix the tick points?
     if (!is.null(scaleStepWidth)) {
-      opScale$scaleStepWidth <- scaleStepWidth
-    } else {
-      if (maxScale-scaleStartValue <= 12) {
-        opScale$scaleStepWidth <- 1
-      } else {
-        opScale$scaleStepWidth <- floor( (maxScale-scaleStartValue) / 10)
-      }
+      opScale$ticks$stepSize <- scaleStepWidth
+      opScale$ticks$maxTicksLimit <- 1000
     }
-    opScale$scaleSteps <- ceiling( (maxScale - scaleStartValue) / 
-                                    opScale$scaleStepWidth)
-    opScale$scaleStartValue <- scaleStartValue
+    # else {
+    #   if (maxScale-scaleStartValue <= 12) {
+    #     opScale$scaleStepWidth <- 1
+    #   } else {
+    #     opScale$scaleStepWidth <- floor( (maxScale-scaleStartValue) / 10)
+    #   }
+    # }
+    # opScale$scaleSteps <- ceiling( (maxScale - scaleStartValue) / 
+    #                                 opScale$scaleStepWidth)
+    # opScale$scaleStartValue <- scaleStartValue
   } else {
     opScale <- NULL
   }
-  
+  print(opScale)
   opScale
 }
 
