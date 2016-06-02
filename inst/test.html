@@ -44,14 +44,12 @@ var myChart = new Chart(ctx, {
     type: 'radar',
     data: data,
     options: {
-        scales: {
-            yAxes: [{
+            scale: {
                 ticks: {
-                    beginAtZero:true
+                    beginAtZero: true,
+                    stepSize: 5.0
                 }
-            }]
-        },
-        lineTension: 5
+            }
     }
 });
 </script>
