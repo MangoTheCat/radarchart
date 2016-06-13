@@ -143,7 +143,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL, main = NULL,
   
   x <- list(data = list(labels=labs, datasets=datasets), options = opList)
   
-  print(jsonlite::toJSON(x, pretty = TRUE, auto_unbox = TRUE))
+  #print(jsonlite::toJSON(x, pretty = TRUE, auto_unbox = TRUE))
   
   # create widget
   htmlwidgets::createWidget(
