@@ -104,7 +104,6 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   
   # Combine scale options, pass through and explicit options
   opList <- c(list(responsive = responsive,
-                   pointDot = addDots, 
                    title = list(display = TRUE, text = "We can do titles!"),
                    legend = list(display = TRUE)), 
               opScale, opPassThrough)
@@ -139,6 +138,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
     datasets[[i]]$pointBorderColor  <- "#fff"     # Point outline
     datasets[[i]]$pointHoverBackgroundColor  <- "#fff"   # Point Highlight fill
     datasets[[i]]$pointHoverBorderColor <- lineCol # Point Highlight line
+    if(!addDots) datasets[[i]]$pointRadius <- 0
   }
   
   x <- list(data = list(labels=labs, datasets=datasets), options = opList)
