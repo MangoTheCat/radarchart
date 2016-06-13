@@ -94,6 +94,9 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   # Check for maxScale
   opScale <- list(scale = setRadarScale(maxScale, scaleStepWidth, scaleStartValue))
 
+  # Remove NULL elements. Might want ot do this on industrial scale
+  opScale <- opScale[!vapply(opScale, is.null, TRUE)]
+    
   # Any extra options passed straight through. Names must match existing options
   # http://www.chartjs.org/docs/#getting-started-global-chart-configuration
   opPassThrough <- list(...)
@@ -102,6 +105,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   opList <- c(list( responsive = responsive, pointLabelFontSize = labelSize,
                   pointDot = addDots), opScale, opPassThrough)
   
+
   # Apply a switch as to whether the dataset names should show up on the hover over
   # If they set the global option themselves this will take priority
   if(!("multiTooltipTemplate" %in% names(opList))) {
@@ -134,6 +138,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   }
   
   x <- list(data = list(labels=labs, datasets=datasets), options = opList)
+  
   
   # create widget
   htmlwidgets::createWidget(
@@ -188,7 +193,6 @@ setRadarScale <- function(maxScale = NULL, scaleStepWidth = NULL,
   } else {
     opScale <- NULL
   }
-  print(opScale)
   opScale
 }
 
