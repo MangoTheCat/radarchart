@@ -110,10 +110,11 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL, main = NULL,
   
   opTitle <- list(title = list(display = !is.null(main), text = main))
 
+  opLegend <- list(legend = list(display = showLegend))
+  
   # Combine scale options, pass through and explicit options
-  opList <- c(list(responsive = responsive,
-                   legend = list(display = showLegend)),
-              opTitle, opScale, opToolTip, opPassThrough)
+  opList <- c(list(responsive = responsive),
+              opTitle, opScale, opToolTip, opLegend, opPassThrough)
               
     
   # forward options using x
