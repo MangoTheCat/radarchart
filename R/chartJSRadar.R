@@ -52,7 +52,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
                          maxScale = NULL, scaleStepWidth = NULL,
                          scaleStartValue = 0, responsive = TRUE, labelSize = 18,
                          addDots = TRUE, colMatrix = NULL, polyAlpha = .2,
-                         lineAlpha = .8, showToolTipLabel = FALSE, ...) {
+                         lineAlpha = .8, showToolTipLabel = TRUE, ...) {
   
   # Should we keep variable names consistent from chart.js to R?
   # Then we can just pass through anything that doesn't need preprocessing
@@ -98,6 +98,9 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
                                    #fontColor = "#111",
                                    #fontFamily = "Times")
   
+  opToolTip <- list(tooltips = list(enabled = showToolTipLabel,
+                                    mode = "label"))
+  
   # Any extra options passed straight through. Names must match existing options
   # http://www.chartjs.org/docs/#getting-started-global-chart-configuration
   opPassThrough <- list(...)
@@ -106,16 +109,8 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   opList <- c(list(responsive = responsive,
                    title = list(display = TRUE, text = "We can do titles!"),
                    legend = list(display = TRUE)), 
-              opScale, opPassThrough)
+              opScale, opToolTip, opPassThrough)
               
-
-  # Apply a switch as to whether the dataset names should show up on the hover over
-  # If they set the global option themselves this will take priority
-  if(!("multiTooltipTemplate" %in% names(opList))) {
-    if(showToolTipLabel) {
-      opList$multiTooltipTemplate <- "<%= value %> - <%= datasetLabel %>"
-    }
-  }
     
   # forward options using x
   datasets <- lapply(names(scores), function(x) list(label=x))
@@ -143,7 +138,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   
   x <- list(data = list(labels=labs, datasets=datasets), options = opList)
   
-  #print(jsonlite::toJSON(x, pretty = TRUE, auto_unbox = TRUE))
+  print(jsonlite::toJSON(x, pretty = TRUE, auto_unbox = TRUE))
   
   # create widget
   htmlwidgets::createWidget(
