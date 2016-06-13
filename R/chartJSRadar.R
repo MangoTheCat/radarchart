@@ -13,6 +13,7 @@
 #' @param scaleStartValue Value at the centre of the radar
 #' @param responsive Logical. whether or not the chart should be responsive and resize when the browser does
 #' @param labelSize Numeric. Point label font size in pixels
+#' @param showLegend: Logical whether to show the legend
 #' @param addDots Logical. Whether to show a dot for each point
 #' @param colMatrix Numeric matrix of rgb colour values. If \code{NULL} defaults are used
 #' @param polyAlpha Alpha value for the fill of polygons
@@ -51,6 +52,7 @@
 chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
                          maxScale = NULL, scaleStepWidth = NULL,
                          scaleStartValue = 0, responsive = TRUE, labelSize = 18,
+                         showLegend = TRUE,
                          addDots = TRUE, colMatrix = NULL, polyAlpha = .2,
                          lineAlpha = .8, showToolTipLabel = TRUE, ...) {
   
@@ -108,7 +110,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   # Combine scale options, pass through and explicit options
   opList <- c(list(responsive = responsive,
                    title = list(display = TRUE, text = "We can do titles!"),
-                   legend = list(display = TRUE)), 
+                   legend = list(display = showLegend)), 
               opScale, opToolTip, opPassThrough)
               
     
