@@ -8,6 +8,7 @@
 #' the scores data set. If set to NA then labels are left blank.
 #' @param width Width of output plot
 #' @param height Height of output plot
+#' @param main Character: Title to be displayed
 #' @param maxScale Max value on each axis
 #' @param scaleStepWidth Spacing between rings on radar
 #' @param scaleStartValue Value at the centre of the radar
@@ -49,7 +50,7 @@
 #' # Add pass through settings for extra options
 #' chartJSRadar(scores=scores, labs=labs, maxScale =10, scaleLineWidth=5)
 #' 
-chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
+chartJSRadar <- function(scores, labs, width = NULL, height = NULL, main = NULL,
                          maxScale = NULL, scaleStepWidth = NULL,
                          scaleStartValue = 0, responsive = TRUE, labelSize = 18,
                          showLegend = TRUE,
@@ -107,11 +108,12 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   # http://www.chartjs.org/docs/#getting-started-global-chart-configuration
   opPassThrough <- list(...)
   
+  opTitle <- list(title = list(display = !is.null(main), text = main))
+
   # Combine scale options, pass through and explicit options
   opList <- c(list(responsive = responsive,
-                   title = list(display = TRUE, text = "We can do titles!"),
-                   legend = list(display = showLegend)), 
-              opScale, opToolTip, opPassThrough)
+                   legend = list(display = showLegend)),
+              opTitle, opScale, opToolTip, opPassThrough)
               
     
   # forward options using x
