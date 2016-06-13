@@ -92,19 +92,23 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   colMatrix <- colourMatrix(colMatrix)
   
   # Check for maxScale
-  opScale <- list(scale = setRadarScale(maxScale, scaleStepWidth, scaleStartValue))
-
-  # Remove NULL elements. Might want ot do this on industrial scale
-  opScale <- opScale[!vapply(opScale, is.null, TRUE)]
-    
+  opScale <- list(scale = list())
+  opScale$scale <- setRadarScale(maxScale, scaleStepWidth, scaleStartValue)
+  opScale$scale$pointLabels <- list(fontSize = labelSize) 
+                                   #fontColor = "#111",
+                                   #fontFamily = "Times")
+  
   # Any extra options passed straight through. Names must match existing options
   # http://www.chartjs.org/docs/#getting-started-global-chart-configuration
   opPassThrough <- list(...)
   
   # Combine scale options, pass through and explicit options
-  opList <- c(list( responsive = responsive, pointLabel = list(fontSize = labelSize),
-                  pointDot = addDots), opScale, opPassThrough)
-  
+  opList <- c(list(responsive = responsive,
+                   pointDot = addDots, 
+                   title = list(display = TRUE, text = "We can do titles!"),
+                   legend = list(display = TRUE)), 
+              opScale, opPassThrough)
+              
 
   # Apply a switch as to whether the dataset names should show up on the hover over
   # If they set the global option themselves this will take priority
@@ -139,6 +143,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   
   x <- list(data = list(labels=labs, datasets=datasets), options = opList)
   
+  #print(jsonlite::toJSON(x, pretty = TRUE, auto_unbox = TRUE))
   
   # create widget
   htmlwidgets::createWidget(
@@ -169,11 +174,7 @@ setRadarScale <- function(maxScale = NULL, scaleStepWidth = NULL,
   if (!is.null(maxScale)) {
     
     opScale <- list(ticks = list(max = maxScale))
-    if(scaleStartValue == 0) {
-      opScale$ticks$min <- 0
-    } else {
-      opScale$ticks$min <- scaleStartValue
-    }
+    opScale$ticks$min <- scaleStartValue
     
     # Did they fix the tick points?
     if (!is.null(scaleStepWidth)) {
@@ -191,7 +192,11 @@ setRadarScale <- function(maxScale = NULL, scaleStepWidth = NULL,
     #                                 opScale$scaleStepWidth)
     # opScale$scaleStartValue <- scaleStartValue
   } else {
-    opScale <- NULL
+    if(!is.null(scaleStartValue)) {
+      opScale <- list(ticks = list(min = scaleStartValue))
+    } else {
+      opScale <- list()
+    }
   }
   opScale
 }
