@@ -102,7 +102,7 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   opPassThrough <- list(...)
   
   # Combine scale options, pass through and explicit options
-  opList <- c(list( responsive = responsive, pointLabelFontSize = labelSize,
+  opList <- c(list( responsive = responsive, pointLabel = list(fontSize = labelSize),
                   pointDot = addDots), opScale, opPassThrough)
   
 
