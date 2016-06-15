@@ -14,7 +14,7 @@
 #' @param scaleStartValue Value at the centre of the radar
 #' @param responsive Logical. whether or not the chart should be responsive and resize when the browser does
 #' @param labelSize Numeric. Point label font size in pixels
-#' @param showLegend: Logical whether to show the legend
+#' @param showLegend Logical whether to show the legend
 #' @param addDots Logical. Whether to show a dot for each point
 #' @param colMatrix Numeric matrix of rgb colour values. If \code{NULL} defaults are used
 #' @param polyAlpha Alpha value for the fill of polygons

@@ -6,6 +6,8 @@
 #' @return The checked and prepped matrix of the same size
 #'
 #' @examples
+#' radarchart:::colourMatrix(diag(255, nrow=3))
+#' 
 colourMatrix <- function(colMatrix) {
   
   # Colours. Perhaps replace with proper palette

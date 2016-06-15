@@ -15,4 +15,8 @@ The checked and prepped matrix of the same size
 \description{
 Check and prep the colour matrix
 }
+\examples{
+radarchart:::colourMatrix(diag(255, nrow=3))
+
+}
 
