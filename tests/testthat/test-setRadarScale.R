@@ -1,11 +1,14 @@
 context("Radar Scale")
 
-test_that("Radar scale is running", { 
+test_that("setRadarscale returns correct structure", { 
   
-  expect_equal(setRadarScale(15, 5, 2),
-               structure(list(scaleOverride = TRUE, scaleStepWidth = 5, 
-                              scaleSteps = 3, scaleStartValue = 2), 
-                         .Names = c("scaleOverride", "scaleStepWidth", 
-                                    "scaleSteps", "scaleStartValue")))
+  tStart <- 2
+  tMax <- 15
+  tStep <- 5
   
-  })
+  scale <- setRadarScale(tMax, tStep, tStart)
+  
+  expect_identical(scale$ticks$min, tStart)
+  expect_identical(scale$ticks$max, tMax)
+  expect_identical(scale$ticks$stepSize, tStep)
+})
