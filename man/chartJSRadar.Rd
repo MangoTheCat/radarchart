@@ -6,8 +6,8 @@
 \usage{
 chartJSRadar(scores, labs, width = NULL, height = NULL, maxScale = NULL,
   scaleStepWidth = NULL, scaleStartValue = 0, responsive = TRUE,
-  labelSize = 18, addDots = TRUE, colMatrix = NULL, polyAlpha = 0.2,
-  lineAlpha = 0.8, showToolTipLabel = FALSE, ...)
+  labelSize = 18, showLegend = TRUE, addDots = TRUE, colMatrix = NULL,
+  polyAlpha = 0.2, lineAlpha = 0.8, showToolTipLabel = TRUE, ...)
 }
 \arguments{
 \item{scores}{Data frame or named list of scores for each axis. 
@@ -42,6 +42,8 @@ the scores data set. If set to NA then labels are left blank.}
 
 \item{...}{Extra options passed straight to chart.js. Names must match existing options
 \url{http://www.chartjs.org/docs/#getting-started-global-chart-configuration}}
+
+\item{showLegend:}{Logical whether to show the legend}
 }
 \description{
 R bindings to the radar plot in the chartJS library
