@@ -1,5 +1,5 @@
 dependencies:
 - name: Chart.js
-  version: 1.0.2
+  version: 2.1.6
   src: htmlwidgets/lib/chartjs
-  script: Chart.js
+  script: Chart.min.js
