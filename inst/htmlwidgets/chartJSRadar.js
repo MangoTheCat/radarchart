@@ -7,9 +7,9 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
 
     var ctx = el.getContext("2d");
+    var instance = {};
 
     return {
-
       renderValue: function(x) {
 
         // Get the context of the canvas element we want to select
@@ -18,15 +18,18 @@ HTMLWidgets.widget({
             data: x.data,
             options: x.options
         });
-
+        
+        instance.Chartjs = Chartjs;
+  
       },
-
+  
       resize: function(width, height) {
-
+  
         // TODO: code to re-render the widget with a new size
-
-      }
-
+  
+      }, 
+      
+      instance: instance
     };
   }
 });
