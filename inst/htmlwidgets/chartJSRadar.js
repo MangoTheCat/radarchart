@@ -19,7 +19,7 @@ HTMLWidgets.widget({
             options: x.options
         });
         
-        instance.Chartjs = Chartjs;
+        instance.Chartjs = myRadarChart;
   
       },
   
