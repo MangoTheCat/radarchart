@@ -1,3 +1,9 @@
+### 0.3.0
+
+- Upgrade to chart.js v2.4.0
+- Allows titles with `main` option
+- Allows legends
+
 ### 0.2.0
 
 - Plots with no data will render (with no data) [issue 5](https://github.com/MangoTheCat/radarchart/issues/5)
