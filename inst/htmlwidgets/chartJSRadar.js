@@ -12,6 +12,9 @@ HTMLWidgets.widget({
     return {
       renderValue: function(x) {
 
+       if (typeof instance.Chartjs != "undefined") {
+         instance.Chartjs.destroy();
+       }
         // Get the context of the canvas element we want to select
         var myRadarChart = new Chart(ctx, {
             type: 'radar',
