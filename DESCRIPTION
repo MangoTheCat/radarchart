@@ -1,6 +1,6 @@
 Package: radarchart
 Title: Radar Chart from Chart.js
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: c(person("Doug", "Ashton", email = "dashton@mango-solutions.com", role = c("aut", "cre")),
              person("Shane", "Porter", email = "sporter@mango-solutions.com", role = c("aut")),
              person("Nick", "Downie", role = c("ctb"), comment = "chart.js library"),

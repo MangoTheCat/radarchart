@@ -8,11 +8,13 @@
 #' the scores data set. If set to NA then labels are left blank.
 #' @param width Width of output plot
 #' @param height Height of output plot
+#' @param main Character: Title to be displayed
 #' @param maxScale Max value on each axis
 #' @param scaleStepWidth Spacing between rings on radar
 #' @param scaleStartValue Value at the centre of the radar
 #' @param responsive Logical. whether or not the chart should be responsive and resize when the browser does
 #' @param labelSize Numeric. Point label font size in pixels
+#' @param showLegend Logical whether to show the legend
 #' @param addDots Logical. Whether to show a dot for each point
 #' @param colMatrix Numeric matrix of rgb colour values. If \code{NULL} defaults are used
 #' @param polyAlpha Alpha value for the fill of polygons
@@ -48,11 +50,12 @@
 #' # Add pass through settings for extra options
 #' chartJSRadar(scores=scores, labs=labs, maxScale =10, scaleLineWidth=5)
 #' 
-chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
+chartJSRadar <- function(scores, labs, width = NULL, height = NULL, main = NULL,
                          maxScale = NULL, scaleStepWidth = NULL,
                          scaleStartValue = 0, responsive = TRUE, labelSize = 18,
+                         showLegend = TRUE,
                          addDots = TRUE, colMatrix = NULL, polyAlpha = .2,
-                         lineAlpha = .8, showToolTipLabel = FALSE, ...) {
+                         lineAlpha = .8, showToolTipLabel = TRUE, ...) {
   
   # Should we keep variable names consistent from chart.js to R?
   # Then we can just pass through anything that doesn't need preprocessing
@@ -92,23 +95,27 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
   colMatrix <- colourMatrix(colMatrix)
   
   # Check for maxScale
-  opScale <- setRadarScale(maxScale, scaleStepWidth, scaleStartValue)
-
+  opScale <- list(scale = list())
+  opScale$scale <- setRadarScale(maxScale, scaleStepWidth, scaleStartValue)
+  opScale$scale$pointLabels <- list(fontSize = labelSize) 
+                                   #fontColor = "#111",
+                                   #fontFamily = "Times")
+  
+  opToolTip <- list(tooltips = list(enabled = showToolTipLabel,
+                                    mode = "label"))
+  
   # Any extra options passed straight through. Names must match existing options
   # http://www.chartjs.org/docs/#getting-started-global-chart-configuration
   opPassThrough <- list(...)
   
-  # Combine scale options, pass through and explicit options
-  opList <- c(list( responsive = responsive, pointLabelFontSize = labelSize,
-                  pointDot = addDots), opScale, opPassThrough)
+  opTitle <- list(title = list(display = !is.null(main), text = main))
+
+  opLegend <- list(legend = list(display = showLegend))
   
-  # Apply a switch as to whether the dataset names should show up on the hover over
-  # If they set the global option themselves this will take priority
-  if(!("multiTooltipTemplate" %in% names(opList))) {
-    if(showToolTipLabel) {
-      opList$multiTooltipTemplate <- "<%= value %> - <%= datasetLabel %>"
-    }
-  }
+  # Combine scale options, pass through and explicit options
+  opList <- c(list(responsive = responsive),
+              opTitle, opScale, opToolTip, opLegend, opPassThrough)
+              
     
   # forward options using x
   datasets <- lapply(names(scores), function(x) list(label=x))
@@ -124,16 +131,19 @@ chartJSRadar <- function(scores, labs, width = NULL, height = NULL,
     
     datasets[[i]]$data <- scores[[i]]             # Data Points
     
-    datasets[[i]]$fillColor  <- fillCol           # Polygon Fill
-    datasets[[i]]$strokeColor  <- lineCol         # Line Colour
-    datasets[[i]]$pointColor  <- lineCol          # Point colour
+    datasets[[i]]$backgroundColor  <- fillCol           # Polygon Fill
+    datasets[[i]]$borderColor  <- lineCol         # Line Colour
+    datasets[[i]]$pointBackgroundColor  <- lineCol          # Point colour
     
-    datasets[[i]]$pointStrokeColor  <- "#fff"     # Point outline
-    datasets[[i]]$pointHighlightFill  <- "#fff"   # Point Highlight fill
-    datasets[[i]]$pointHighlightStroke <- lineCol # Point Highlight line
+    datasets[[i]]$pointBorderColor  <- "#fff"     # Point outline
+    datasets[[i]]$pointHoverBackgroundColor  <- "#fff"   # Point Highlight fill
+    datasets[[i]]$pointHoverBorderColor <- lineCol # Point Highlight line
+    if(!addDots) datasets[[i]]$pointRadius <- 0
   }
   
   x <- list(data = list(labels=labs, datasets=datasets), options = opList)
+  
+  #print(jsonlite::toJSON(x, pretty = TRUE, auto_unbox = TRUE))
   
   # create widget
   htmlwidgets::createWidget(
@@ -163,25 +173,31 @@ setRadarScale <- function(maxScale = NULL, scaleStepWidth = NULL,
   
   if (!is.null(maxScale)) {
     
-    opScale <- list(scaleOverride = TRUE)
+    opScale <- list(ticks = list(max = maxScale))
+    opScale$ticks$min <- scaleStartValue
     
     # Did they fix the tick points?
     if (!is.null(scaleStepWidth)) {
-      opScale$scaleStepWidth <- scaleStepWidth
-    } else {
-      if (maxScale-scaleStartValue <= 12) {
-        opScale$scaleStepWidth <- 1
-      } else {
-        opScale$scaleStepWidth <- floor( (maxScale-scaleStartValue) / 10)
-      }
+      opScale$ticks$stepSize <- scaleStepWidth
+      opScale$ticks$maxTicksLimit <- 1000
     }
-    opScale$scaleSteps <- ceiling( (maxScale - scaleStartValue) / 
-                                    opScale$scaleStepWidth)
-    opScale$scaleStartValue <- scaleStartValue
+    # else {
+    #   if (maxScale-scaleStartValue <= 12) {
+    #     opScale$scaleStepWidth <- 1
+    #   } else {
+    #     opScale$scaleStepWidth <- floor( (maxScale-scaleStartValue) / 10)
+    #   }
+    # }
+    # opScale$scaleSteps <- ceiling( (maxScale - scaleStartValue) / 
+    #                                 opScale$scaleStepWidth)
+    # opScale$scaleStartValue <- scaleStartValue
   } else {
-    opScale <- NULL
+    if(!is.null(scaleStartValue)) {
+      opScale <- list(ticks = list(min = scaleStartValue))
+    } else {
+      opScale <- list()
+    }
   }
-  
   opScale
 }
 

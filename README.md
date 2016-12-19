@@ -62,6 +62,14 @@ chartJSRadar(scores, maxScale = 10, showToolTipLabel=TRUE)
 <img src="inst/figs/readmePlot02.jpg" alt="Static image of example output"  />
 <p class="caption">Static version. Real plots are interactive</p>
 
+You can now also add a title
+
+```r
+chartJSRadar(skills, main = "Data Science Radar")
+```
+<img src="inst/figs/readmePlot03.jpg" alt="Static image of example output"  />
+<p class="caption">Static version. Real plots are interactive</p>
+
 ## Shiny
 
 As it's based on htmlwidgets it's easy to use `radarchart` with Shiny. Just use the 

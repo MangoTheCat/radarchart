@@ -4,10 +4,11 @@
 \alias{chartJSRadar}
 \title{Make a ChartJS Radar Plot}
 \usage{
-chartJSRadar(scores, labs, width = NULL, height = NULL, maxScale = NULL,
-  scaleStepWidth = NULL, scaleStartValue = 0, responsive = TRUE,
-  labelSize = 18, addDots = TRUE, colMatrix = NULL, polyAlpha = 0.2,
-  lineAlpha = 0.8, showToolTipLabel = FALSE, ...)
+chartJSRadar(scores, labs, width = NULL, height = NULL, main = NULL,
+  maxScale = NULL, scaleStepWidth = NULL, scaleStartValue = 0,
+  responsive = TRUE, labelSize = 18, showLegend = TRUE, addDots = TRUE,
+  colMatrix = NULL, polyAlpha = 0.2, lineAlpha = 0.8,
+  showToolTipLabel = TRUE, ...)
 }
 \arguments{
 \item{scores}{Data frame or named list of scores for each axis. 
@@ -20,6 +21,8 @@ the scores data set. If set to NA then labels are left blank.}
 
 \item{height}{Height of output plot}
 
+\item{main}{Character: Title to be displayed}
+
 \item{maxScale}{Max value on each axis}
 
 \item{scaleStepWidth}{Spacing between rings on radar}
@@ -29,6 +32,8 @@ the scores data set. If set to NA then labels are left blank.}
 \item{responsive}{Logical. whether or not the chart should be responsive and resize when the browser does}
 
 \item{labelSize}{Numeric. Point label font size in pixels}
+
+\item{showLegend}{Logical whether to show the legend}
 
 \item{addDots}{Logical. Whether to show a dot for each point}
 

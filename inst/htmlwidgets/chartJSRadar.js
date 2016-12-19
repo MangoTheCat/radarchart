@@ -4,27 +4,35 @@ HTMLWidgets.widget({
 
   type: 'output',
 
-  initialize: function(el, width, height) {
+  factory: function(el, width, height) {
 
-    var Chartjs = new Chart(el.getContext("2d"));
+    var ctx = el.getContext("2d");
+    var instance = {};
 
     return {
-       Chartjs: Chartjs
-    }
-
-  },
-
-  renderValue: function(el, x, instance) {
-
-    
-    // Get the context of the canvas element we want to select
-    var myRadarChart = instance.Chartjs.Radar(x.data, x.options);
-
-
-  },
-
-  resize: function(el, width, height, instance) {
-
+      renderValue: function(x) {
+        
+        if (typeof instance.Chartjs != "undefined") {
+            instance.Chartjs.destroy();
+        }
+        // Get the context of the canvas element we want to select
+        var myRadarChart = new Chart(ctx, {
+            type: 'radar',
+            data: x.data,
+            options: x.options
+        });
+        
+        instance.Chartjs = myRadarChart;
+  
+      },
+  
+      resize: function(width, height) {
+  
+        // TODO: code to re-render the widget with a new size
+  
+      }, 
+      
+      instance: instance
+    };
   }
-
 });

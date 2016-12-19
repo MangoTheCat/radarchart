@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+    <title>Radar Chart Test</title>
+    
+    <script src="htmlwidgets/lib/chart.js/dist/chart.js"></script>
+    
+  </head>
+  <body>
+  <canvas id="myChart" width="400px" height="400px"></canvas>
+<script>
+var ctx = document.getElementById("myChart").getContext("2d");
+
+var data = {
+    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+    datasets: [
+        {
+            label: "My First dataset",
+            data: [65, 59, 90, 81, 56, 55, 40]
+        },
+        {
+            label: "My Second dataset",
+            data: [28, 48, 40, 19, 96, 27, 100]
+        }
+    ]
+};
+
+var myChart = new Chart(ctx, {
+    type: 'radar',
+    data: data,
+    options: {
+            scale: {
+                ticks: {
+                    min:0,
+                    max:100,
+                    stepSize: 5.0,
+                }
+            }
+    }
+});
+</script>
+  </body>
+</html>
