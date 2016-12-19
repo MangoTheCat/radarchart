@@ -67,6 +67,8 @@ You can now also add a title
 ```r
 chartJSRadar(skills, main = "Data Science Radar")
 ```
+<img src="inst/figs/readmePlot03.jpg" alt="Static image of example output"  />
+<p class="caption">Static version. Real plots are interactive</p>
 
 ## Shiny
 
