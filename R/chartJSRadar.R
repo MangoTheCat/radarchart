@@ -47,6 +47,9 @@
 #' # Fix max and spacing
 #' chartJSRadar(scores=scores, labs=labs, maxScale=12, scaleStepWidth = 2)
 #' 
+#' # Change title and remove legend
+#' chartJSRadar(scores=scores, labs=labs, main = "Data Science Radar", showLegend = FALSE)
+#' 
 #' # Add pass through settings for extra options
 #' chartJSRadar(scores=scores, labs=labs, maxScale =10, scaleLineWidth=5)
 #' 
