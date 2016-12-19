@@ -6,6 +6,8 @@ shinyUI(pageWithSidebar(
     checkboxGroupInput('selectedPeople', 'Who to include', 
                        names(radarchart::skills)[-1], selected="Rich"),
     
+    textInput("main", "main (title)", value = ""),
+    
     numericInput("maxScale", "maxScale - 0 for NULL (default)", value = 10, min = 0,
                  max = NA, step = 1),
     
@@ -22,6 +24,8 @@ shinyUI(pageWithSidebar(
     numericInput("polyAlpha", "polyAlpha", value = 0.2, min = 0, max = 1, step = 0.05),
     
     checkboxInput("addDots", "addDots", value = TRUE),
+    
+    checkboxInput("showLegend", "showLegend", value = TRUE),
     
     checkboxInput("showToolTipLabel", "showToolTipLabel", value = FALSE),
     

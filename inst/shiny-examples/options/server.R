@@ -29,32 +29,37 @@ shinyServer(function(input, output) {
   
   output$radarCall <- reactive({
     
-    sk <- paste0("skills[, c(\"Label\"," ,
+    arguments <- c(
+      paste0("skills[, c(\"Label\"," ,
             paste0(paste0('"', input$selectedPeople, '"'), collapse=", "), ")]",
-            collapse="")
+            collapse=""),
+      
+      paste0("main = ", ifelse(input$main != "", input$main, "NULL")),
     
-    ms <- paste0("maxScale = ", ifelse(input$maxScale>0, input$maxScale, "NULL"))
+      paste0("maxScale = ", ifelse(input$maxScale>0, input$maxScale, "NULL")),
+      
+      paste0("scaleStepWidth = ", 
+                 ifelse(input$scaleStepWidth>0, input$scaleStepWidth, "NULL")),
+      
+      paste0("scaleStartValue = ", input$scaleStartValue),
     
-    sw <- paste0("scaleStepWidth = ", 
-                 ifelse(input$scaleStepWidth>0, input$scaleStepWidth, "NULL"))
-    sv <- paste0("scaleStartValue = ", input$scaleStartValue)
+      paste0("labelSize = ", input$labelSize),
     
-    ls <- paste0("labelSize = ", input$labelSize)
+      paste0("addDots = ", as.character(input$addDots)),
     
-    ad <- paste0("addDots = ", as.character(input$addDots))
+      paste0("showToolTipLabel = ", as.character(input$showToolTipLabel)),
     
-    tt <- paste0("showToolTipLabel = ", as.character(input$showToolTipLabel))
+      paste0("showLegend = ", as.character(input$showLegend)),
     
-    la <- paste0("lineAlpha = ", input$lineAlpha)
+      paste0("lineAlpha = ", input$lineAlpha),
     
-    pa <- paste0("polyAlpha = ", input$polyAlpha)
+      paste0("polyAlpha = ", input$polyAlpha),
     
-    rs <- paste0("responsive = ", as.character(input$responsive))
+      paste0("responsive = ", as.character(input$responsive)),
     
-    cm <- paste0("colMatrix = ", input$colMatValue)
+      paste0("colMatrix = ", input$colMatValue)
+    )
 
-    arguments <- c(sk, ms, sw, sv, rs, ls, ad, la, pa, tt, cm)
-    
     arguments[1] <- paste0("chartJSRadar(", arguments[1])
     arguments[length(arguments)] <- paste0(arguments[length(arguments)], ")")
     
@@ -84,10 +89,12 @@ shinyServer(function(input, output) {
 
     # The main call
     chartJSRadar(skills[, c("Label", input$selectedPeople)], 
+                 main = input$main,
                  maxScale = maxScaleR(),
                  scaleStepWidth = scaleStepWidthR(),
                  scaleStartValue = input$scaleStartValue,
                  responsive = input$responsive,
+                 showLegend = input$showLegend,
                  labelSize = input$labelSize,
                  addDots = input$addDots,
                  lineAlpha = input$lineAlpha,
