@@ -11,7 +11,11 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 2 notes
+
+Note about MIT license. Both this package and Chart.js are MIT.
+
+Note about typo in Chart.js. This is normal, the library name has a dot in.
 
 ## Reverse dependencies
 
