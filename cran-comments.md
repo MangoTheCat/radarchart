@@ -1,5 +1,6 @@
 ## Updated in this version
 
+* Fixed DESCRIPTION file quotes
 * Upgraded to latest chart.js version 2.4.0
 * Added titles and legends as requested
 
@@ -11,11 +12,9 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 2 notes
+0 errors | 0 warnings | 1 notes
 
 Note about MIT license. Both this package and Chart.js are MIT.
-
-Note about typo in Chart.js. This is normal, the library name has a dot in.
 
 ## Reverse dependencies
 

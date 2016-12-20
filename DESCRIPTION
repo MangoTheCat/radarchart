@@ -1,14 +1,14 @@
 Package: radarchart
-Title: Radar Chart from Chart.js
-Version: 0.3.0
+Title: Radar Chart from 'Chart.js'
+Version: 0.3.1
 Authors@R: c(person("Doug", "Ashton", email = "dashton@mango-solutions.com", role = c("aut", "cre")),
              person("Shane", "Porter", email = "sporter@mango-solutions.com", role = c("aut")),
              person("Nick", "Downie", role = c("ctb"), comment = "chart.js library"),
              person("Tanner", "Linsley", role = c("ctb"), comment = "chart.js library"),
              person("William", "Entriken", role = c("ctb"), comment = "chart.js library"))
-Description: Create interactive radar charts using the 'Chart.js' JavaScript library
-    and the 'htmlwidgets' package. Chart.js (http://www.chartjs.org/) is a 
-    lightweight library that supports several types of simple chart using the HTML5 
+Description: Create interactive radar charts using the 'Chart.js' 'JavaScript' library
+    and the 'htmlwidgets' package. 'Chart.js' <http://www.chartjs.org/> is a 
+    lightweight library that supports several types of simple chart using the 'HTML5' 
     canvas element. This package provides an R interface specifically to the 
     radar chart, sometimes called a spider chart, for visualising multivariate data.
 Depends:
