@@ -26,5 +26,6 @@ Suggests: testthat,
     knitr,
     rmarkdown,
     tidyr,
-    shiny
+    shiny,
+    covr
 VignetteBuilder: knitr
