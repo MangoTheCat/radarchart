@@ -27,7 +27,7 @@ colourMatrix <- function(colMatrix) {
         
     # Check the range
     if (max(colMatrix) > 255) {
-      colMatrix <- colMatrix / max(colMatrix)
+      colMatrix <- 255 * colMatrix / max(colMatrix)
       warning("colMatrix has values larger than 255, scaling by largest value")
     }
     
