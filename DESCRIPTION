@@ -3,6 +3,7 @@ Title: Radar Chart from 'Chart.js'
 Version: 0.3.1.9000
 Authors@R: c(person("Doug", "Ashton", email = "dashton@mango-solutions.com", role = c("aut", "cre")),
              person("Shane", "Porter", email = "sporter@mango-solutions.com", role = c("aut")),
+             person("Adeel", "Khan", email = "AdeelK@gwu.edu", role = c("ctb")),
              person("Nick", "Downie", role = c("ctb"), comment = "chart.js library"),
              person("Tanner", "Linsley", role = c("ctb"), comment = "chart.js library"),
              person("William", "Entriken", role = c("ctb"), comment = "chart.js library"))
