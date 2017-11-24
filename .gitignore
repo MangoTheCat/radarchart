@@ -3,3 +3,4 @@
 .RData
 inst/doc
 radarchart.Rproj
+.DS_Store
