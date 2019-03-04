@@ -21,6 +21,10 @@ HTMLWidgets.widget({
           while (instance.config.data.datasets.length > x.data.datasets.length) {
             instance.config.data.datasets.pop();
           }
+          // Update labels if necessary
+          if (instance.config.data.labels !== x.data.labels) {
+            instance.config.data.labels = x.data.labels
+          }
 
           x.data.datasets.forEach(function(dataset, sid) {
 
